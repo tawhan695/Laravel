@@ -1,5 +1,5 @@
 @extends('layouts.main')
-
+@section('title','Welcom to ')
 @section('content')
      <!--==========================
     Intro Section

@@ -20,14 +20,14 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <label for="uname">Username:</label>
-                  <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
+                  <label for="uname">ชื่อ:</label>
+                  <input type="text" class="form-control" id="Fname" placeholder="ชื่อ" name="uname" required>
                   <div class="valid-feedback">Valid.</div>
-                  <div class="invalid-feedback">Please fill out this field.</div>
+                  <div class="invalid-feedback">กรุณาป้อนชื่อ</div>
                 </div>
                 <div class="form-group">
                   <label for="uname">Username:</label>
-                  <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
+                  <input type="text" class="form-control" id="Lname" placeholder="Enter username" name="Lname" required>
                   <div class="valid-feedback">Valid.</div>
                   <div class="invalid-feedback">Please fill out this field.</div>
                 </div>

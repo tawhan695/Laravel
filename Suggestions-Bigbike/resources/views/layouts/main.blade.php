@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>NewBiz Bootstrap Template</title>
+  <title>@yield('title')</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -76,10 +76,14 @@
               <li><a href="#">Drop Down 5</a></li>
             </ul>
           </li>
+          @if($status!=true)
           <li><a href="#contact" data-toggle="modal" data-target="#Modal-regiter">Regiter</a></li>
           <li><a href="#contact" data-toggle="modal" data-target="#Modal-login">Login</a></li>
           @extends('layouts.modal.login')
           @extends('layouts.modal.regiter')
+          @elseif($status==true)
+          <li><a href="#contact" data-toggle="modal" data-target="#Modal-regiter">{{$name}}</a></li>
+          @endif
         </ul>
       </nav><!-- .main-nav -->
       
