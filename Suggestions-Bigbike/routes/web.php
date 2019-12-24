@@ -12,3 +12,7 @@
 */
 
 Route::get('/', 'PagersController@index');
+// Route::resource('/User', 'UserController');
+Route::post('Regiter','UserController@check_user');
+Route::post('Login','UserController@Login');
+Route::get('logout' , 'UserController@Logout');

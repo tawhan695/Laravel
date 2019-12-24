@@ -8,32 +8,26 @@
             <div class="login-body">
               <div  id="head " class="cenn"><img class="prof" src="img/bike/prof.png" alt=""></div>
               <br>
-              <h2 id="head">Welcome</h2>
-              <p id="head">Log in to your account to continue</p>
+              <h2 id="head">เข้าสู่ระบบ*</h2>
+              <p id="head">เว้บไซต์ให้คำแนะนำการชื้อขายและประเมินราคาบิ๊กไบค์มือสอง</p>
 
-              <form action="/action_page.php" class="needs-validation" novalidate>
+            <form action="Login"  method="POST" class="needs-validation" novalidate>
+              @csrf
                 <div class="form-group">
-                  <label for="uname">Username:</label>
-                  <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
-                  <div class="valid-feedback">Valid.</div>
-                  <div class="invalid-feedback">Please fill out this field.</div>
+                  <label for="uname">ชื่อผู้ใช้*</label>
+                  <input type="text" class="form-control" id="uname" placeholder="ป้อนชื่อผู้ใช้" name="uname" required>
+                  <div class="valid-feedback">ถูกต้อง</div>
+                  <div class="invalid-feedback">กรุณาป้อนชื่อผู้ใช้</div>
                 </div>
                 <div class="form-group">
-                  <label for="pwd">Password:</label>
-                  <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
-                  <div class="valid-feedback">Valid.</div>
-                  <div class="invalid-feedback">Please fill out this field.</div>
+                  <label for="pwd">รหัสผ่าน*</label>
+                  <input type="password" class="form-control" id="pwd" placeholder="ป้อนรหัสผ่าน" name="pswd" required>
+                  <div class="valid-feedback">ถูกต้อง</div>
+                  <div class="invalid-feedback">กรุณาป้อนรหัสผ่าน</div>
                 </div>
-                {{-- <div class="form-group form-check">
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" name="remember" required> I agree on blabla.
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback">Check this checkbox to continue.</div>
-                  </label>
-                </div> --}}
-                <button id="btn-submit" type="submit" class="btn btn-outline-primary btn-block" >LOGIN</button>
+                <button id="btn-submit" type="submit" class="btn btn-outline-primary btn-block" >เข้าสู่ระบบ</button>
                 <br>
-                <label class="float-right">No account yet?<a title="regiter" class="text-primary" data-dismiss="modal" data-toggle="modal" data-target="#Modal-regiter">Sign up now</a></label>
+                <label class="float-right">ผู้ใช้ใหม่? <a title="regiter" class="text-primary" data-dismiss="modal" data-toggle="modal" data-target="#Modal-regiter">สมัครสมาชิก</a></label>
               </form>
             </div>
             

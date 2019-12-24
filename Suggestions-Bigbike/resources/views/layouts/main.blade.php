@@ -54,36 +54,29 @@
 
       <nav class="main-nav float-right d-none d-lg-block">
         <ul>
-          <li class="active"><a href="/">Home</a></li>
+          <li class="active"><a href="/">หน้าหลัก</a></li>
           <li><a href="#about">About Us</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#team">Team</a></li>
-          <li class="drop-down"><a href="">Drop Down</a>
+         
+          @if (session()->has('user-login'))
+          @include('sweetalert::alert')
+          <li class="drop-down"><a href="">test</a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
-              <li class="drop-down"><a href="#">Drop Down 2</a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
               <li><a href="#">Drop Down 3</a></li>
               <li><a href="#">Drop Down 4</a></li>
-              <li><a href="#">Drop Down 5</a></li>
+              <li><a href="logout">Logout</a></li>
             </ul>
-          </li>
-          @if($status!=true)
-          <li><a href="#contact" data-toggle="modal" data-target="#Modal-regiter">Regiter</a></li>
-          <li><a href="#contact" data-toggle="modal" data-target="#Modal-login">Login</a></li>
-          @extends('layouts.modal.login')
-          @extends('layouts.modal.regiter')
-          @elseif($status==true)
-          <li><a href="#contact" data-toggle="modal" data-target="#Modal-regiter">{{$name}}</a></li>
+          </li>       
+          @else
+              <li><a href="#contact" data-toggle="modal" data-target="#Modal-regiter">สมัครสมาชิก</a></li>
+              <li><a href="#contact" data-toggle="modal" data-target="#Modal-login">ลงชื่อเข้าใช้</a></li>
+              @extends('layouts.modal.login')
+              @extends('layouts.modal.regiter')
           @endif
+        
         </ul>
       </nav><!-- .main-nav -->
       
@@ -120,6 +113,10 @@
 
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
-
+  {{-- @if (session('Member_name'))
+  <div class="alert alert-success">
+      {{ session('Member_name') }}
+  </div>
+@endif --}}
 </body>
 </html>

@@ -10,32 +10,77 @@
               <br>
               <h2 id="head">Registration</h2>
               {{-- form-group col-md-5 --}}
-              <form action="/action_page.php" class="needs-validation" novalidate>
+              <form action="Regiter" method="POST" class="needs-validation" novalidate>
+                 @csrf
+                <label class="mdb-main-label">คำนำหน้าชื่อ*</label>
                 <div class="form-group">
-                  <select class="browser-default custom-select custom-select-lg mb-3">
-                    <option selected>คำนำหน้าชื่อ</option>
-                    <option value="1">นาย</option>
-                    <option value="2">นาง</option>
-                    <option value="3">นางสาว</option>
+                  <select name="title_name" class="browser-default custom-select custom-select-lg mb-3">
+                    {{-- <option >เลือกคำนำหน้าชื่อ*</option> --}}
+                    <option selected value="นาย">นาย</option>
+                    <option value="นาง">นาง</option>
+                    <option value="นางสาว">นางสาว</option>
                   </select>
                 </div>
+                
                 <div class="form-group">
-                  <label for="uname">ชื่อ:</label>
-                  <input type="text" class="form-control" id="Fname" placeholder="ชื่อ" name="uname" required>
-                  <div class="valid-feedback">Valid.</div>
+                  <label for="uname">ชื่อ*</label>
+                  <input type="text" class="form-control" id="fname" placeholder="ป้อนชื่อ" name="fname" required>
+                  <div class="valid-feedback">ถูกต้อง</div>
                   <div class="invalid-feedback">กรุณาป้อนชื่อ</div>
                 </div>
                 <div class="form-group">
-                  <label for="uname">Username:</label>
-                  <input type="text" class="form-control" id="Lname" placeholder="Enter username" name="Lname" required>
-                  <div class="valid-feedback">Valid.</div>
-                  <div class="invalid-feedback">Please fill out this field.</div>
+                  <label for="lname">นามสกุล*</label>
+                  <input type="text" class="form-control" id="Lname" placeholder="ป้อนนามกุล" name="Lname" required>
+                  <div class="valid-feedback">ถูกต้อง</div>
+                  <div class="invalid-feedback">กรุณาป้อนนามสกุล</div>
+                </div>
+                <div class="form-group">
+                  <label for="uname">ชื่อผู้ใช้*</label>
+                  <input type="text" class="form-control" id="uname" placeholder="ป้อนชื่อผู้ใช้" name="uname" required>
+                  <div class="valid-feedback">ถูกต้อง</div>
+                  <div class="invalid-feedback">กรุณาป้อนชื่อผู้ใช้</div>
+                </div>
+                <div class="form-group">
+                  <label for="uname">อีเมล*</label>
+                  <input type="email" class="form-control" id="email" placeholder="ป้อนอีเมล" name="email" required>
+                  <div class="valid-feedback">ถูกต้อง</div>
+                  <div class="invalid-feedback">กรุณาป้อนอีเมล</div>
+                </div>
+                <div class="form-group">
+                  <label for="pwd">รหัสผ่าน*</label>
+                  <input type="password" class="form-control" id="pwd" placeholder="ป้อนรหัสผ่าน" name="pswd" required>
+                  <div class="valid-feedback">ถูกต้อง</div>
+                  <div class="invalid-feedback">กรุณาป้อนรหัสผ่าน</div>
+                </div>
+                <div class="form-group">
+                  <label for="pwd">ยืนยันรหัสผ่าน*</label>
+                  <input type="password" class="form-control" id="pwd" placeholder="ป้อนรหัสผ่าน" name="pswd" required>
+                  <div class="valid-feedback">ถูกต้อง</div>
+                  <div class="invalid-feedback">กรุณาป้อนรหัสผ่าน</div>
+                </div>
+                <div class="form-group">
+                  <label for="uname">วันเดือนปีเกิด*</label>
+                  <input type="date" class="form-control" id="birth" placeholder="ป้อนวันเดือนปีเกิด" name="birth" required>
+                  <div class="valid-feedback">ถูกต้อง</div>
+                  <div class="invalid-feedback">กรุณาป้อนวันเดือนปีเกิด</div>
+                </div>
+                <div class="form-group">
+                  <label for="uname">อายุ*</label>
+                  <input type="number" class="form-control" id="age" placeholder="ป้อนอายุ" name="age" required>
+                  <div class="valid-feedback">ถูกต้อง</div>
+                  <div class="invalid-feedback">กรุณาป้อนอายุ</div>
+                </div>
+                <div class="form-group">
+                  <label for="uname">ส่วนสูง*</label>
+                  <input type="number" class="form-control" id="heiht" placeholder="ป้อนอายุ" name="heiht" required>
+                  <div class="valid-feedback">ถูกต้อง</div>
+                  <div class="invalid-feedback">กรุณาป้อนส่วนสูง</div>
                 </div>
 
 
-                <button id="btn-submit" type="submit" class="btn btn-outline-primary btn-block" >LOGIN</button>
+                <button id="btn-submit" type="submit" class="btn btn-outline-primary btn-block" >สมัคร</button>
                 <br>
-                <label class="float-right">No account yet?<a title="regiter" class="text-primary" data-dismiss="modal" data-toggle="modal" data-target="#Modal-regiter">Sign up now</a></label>
+                <label class="float-right">มีบัญชีอยู่แล้ว? <a title="regiter" class="text-primary" data-dismiss="modal" data-toggle="modal" data-target="#Modal-login">เข้าสู่ระบบ</a></label>
               </form>
             </div>
             
