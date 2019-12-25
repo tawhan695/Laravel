@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Member;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Schema;
 class UserController extends Controller
 {   
  
@@ -22,10 +23,13 @@ class UserController extends Controller
             if($request->uname == $title->Member_username){
                 if($request->pswd ==  $title->Member_password ){
                   
-                    session()->put('user-login',$title->Member_name,$title->Member_last_name,$title->Member_username, $title->Member_password, $title->Member_email);
-                    $user = session()->get('user-login');
+                    session()->put('user-login',$title);
+                    $user = $user = session()->get('user-login');;
                     // echo   $user->Member_name;
                     // echo   $user->Member_last_name;
+                    echo session()->get('user-login')->Member_username;
+                    // $value = session('user-login', 'Member_username');
+                    // echo $value;
                     // echo   $user->Member_username;
                     // echo   $user->Member_password;
                     // echo   $user->Member_email;
@@ -35,11 +39,11 @@ class UserController extends Controller
                 //<script>Swal.fire({position: 'top-end',icon: 'success',title: 'ล็อกอินสำเร็จ',showConfirmButton: false,timer: 1500})</script>
                      return redirect('/');
                 }else{
-                    echo "รหัสไม่ถูกต้อง";
+                    // echo "รหัสไม่ถูกต้อง";
                 }
          
             }else{
-                echo "ชื่อผู้ใช้ไม่ถูกต้อง";
+                // echo "ชื่อผู้ใช้ไม่ถูกต้อง";
             }
         }
       
@@ -71,27 +75,47 @@ class UserController extends Controller
         //   print_r($request->input());
         //   print_r( $request -> title_name);
 
-          $time = strtotime($request -> birth);
+        //   $time = strtotime();
 
-          $newformat = date('Y-m-d',$time);
+          $newformat = Date($request -> birth);
 
-          print_r($newformat);
-
-
-
-          $user = new Member;
-          $user -> Member_id='';
-          $user -> Member_titel = $request -> title_name;
-          $user -> Member_name = $request -> fname;
-          $user -> Member_last_name = $request -> Lname;
-          $user -> Date_birth =  $newformat;
-          $user -> Member_age = $request -> age;
-          $user -> End_heiht = $request -> heiht;
-          $user -> Member_username = $request -> uname;
-          $user -> Member_password = $request -> pswd;
-          $user -> Member_email =  $request -> email;
-          //print_r($user);
-          $user->save();
-          //return redirect()->route('/')->with('success','บันทึกข้อมูนเรียบร้อย');
+        //   $user = new Member;
+        //   $user -> Member_id=2;
+        //   $user -> Member_titel = $request -> title_name;
+        //   $user -> Member_name = $request -> fname;
+        //   $user -> Member_last_name = $request -> Lname;
+        //   $user -> Date_birth =  $newformat;
+        //   $user -> Member_age = $request -> age;
+        //   $user -> End_heiht = $request -> heiht;
+        //   $user -> Member_username = $request -> uname;
+        //   $user -> Member_password = $request -> pswd;
+        //   $user -> Member_email =  $request -> email;
+        //   print_r($user);
+        // echo ($request -> title_name);
+        // var_dump(intval($request -> age));
+        $id = DB::table('member')->insertGetId(
+            [
+            // 'Member_id' => nullable();
+            'Member_titel' => $request -> title_name,
+            'Member_name' => $request -> fname,
+            'Member_last_name' => $request -> Lname,
+            'Date_birth'=>  $newformat,
+            'Member_age' => intval($request -> age),
+            'End_heiht' => floatval($request -> heiht),
+            'Member_username' => $request -> uname,
+            'Member_password' => $request -> pswd,
+            'Member_email' =>  $request -> email
+            ]
+            
+        );
+        //  dd($id);
+        // $id = DB::table('test')->insertGetId(['name' => 1]);
+     
+        // 
+        Alert::success('สมัครสมาชิกสำเร็จ')->autoclose(2000);
+        //   $user->save();
+        session()->put('user-login',$request -> fname,$request -> Lname,$request -> uname, $request -> pswd, $request -> email);
+       
+        return redirect('/');
     }
 }

@@ -55,19 +55,21 @@
       <nav class="main-nav float-right d-none d-lg-block">
         <ul>
           <li class="active"><a href="/">หน้าหลัก</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#team">Team</a></li>
-         
-          @if (session()->has('user-login'))
+          <li><a href="search">ค้าหารถจักรยานยนต์</a></li>
+          <li><a href="">ประเมิณราคารถจักรยานยนต์</a></li>
+          <li><a href="">เว็บบอร์ด</a></li>
+          {{-- <li><a href="">Team</a></li> --}}
           @include('sweetalert::alert')
-          <li class="drop-down"><a href="">test</a>
+          @if (session()->has('user-login'))
+          
+          <li class="drop-down"><a href="">{{ session()->get('user-login')->Member_name}}  {{ session()->get('user-login')->Member_last_name}}</a>
             <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-              <li><a href="logout">Logout</a></li>
+              <li><div class="text-center"><img src="img/icons8_male_user_50px.png" alt=""></div></li>
+              <li><a href="#"  class="text-center" ><h4>{{ session()->get('user-login')->Member_name}}  {{ session()->get('user-login')->Member_last_name}}</h4></a></li>
+              <li><div class="text-center" >{{ session()->get('user-login')->Member_email}}</div></li>
+              <li><a href="">จัดการโปรไฟล์</a></li>
+              <li></li> --}}
+              <li><a href="logout" style="color:brown">ออกจากระบบ</a></li>
             </ul>
           </li>       
           @else

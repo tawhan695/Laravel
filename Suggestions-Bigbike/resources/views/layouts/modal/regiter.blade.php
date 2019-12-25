@@ -15,7 +15,6 @@
                 <label class="mdb-main-label">คำนำหน้าชื่อ*</label>
                 <div class="form-group">
                   <select name="title_name" class="browser-default custom-select custom-select-lg mb-3">
-                    {{-- <option >เลือกคำนำหน้าชื่อ*</option> --}}
                     <option selected value="นาย">นาย</option>
                     <option value="นาง">นาง</option>
                     <option value="นางสาว">นางสาว</option>
@@ -54,7 +53,7 @@
                 </div>
                 <div class="form-group">
                   <label for="pwd">ยืนยันรหัสผ่าน*</label>
-                  <input type="password" class="form-control" id="pwd" placeholder="ป้อนรหัสผ่าน" name="pswd" required>
+                  <input type="password" class="form-control" id="pwd2" placeholder="ป้อนรหัสผ่าน" name="pswd" required>
                   <div class="valid-feedback">ถูกต้อง</div>
                   <div class="invalid-feedback">กรุณาป้อนรหัสผ่าน</div>
                 </div>
@@ -72,7 +71,7 @@
                 </div>
                 <div class="form-group">
                   <label for="uname">ส่วนสูง*</label>
-                  <input type="number" class="form-control" id="heiht" placeholder="ป้อนอายุ" name="heiht" required>
+                  <input type="number" class="form-control" id="heiht" placeholder="ป้อนส่วนสูง" name="heiht" required>
                   <div class="valid-feedback">ถูกต้อง</div>
                   <div class="invalid-feedback">กรุณาป้อนส่วนสูง</div>
                 </div>
@@ -103,6 +102,60 @@
                 });
               }, false);
             })();
+            setInterval(function(){ 
+              var pass1 =document.getElementById('pwd').value;
+              // console.log(pass1);
+              var pass2 =document.getElementById('pwd2').value;
+              // console.log(pass2);
+              if(pass1.length>8){
+                if(pass1 == pass2){
+                
+                console.log('ตรง')
+              }else if(pass2.length>8){
+                alert("รหัส่านไม่รงกัน");
+                document.getElementById('pwd').value="";
+                document.getElementById('pwd2').value="";
+              }
+              
+              }
+
+             }, 3000);
+
+             setInterval(function(){
+              var birth =document.getElementById('birth').value;
+              if(birth.length==10){
+                var d = new Date();
+                var d2 = new Date(birth);
+                var Y =d.getFullYear()-d2.getFullYear();
+                // var M =d.getMonth()- d2.getMonth();
+                // var D =d.getDate()-d2.getDate();
+                // var MM=0;
+                document.getElementById('age').value=Y;
+               
+                // if( M<d2.getMonth()){
+                //   M-1;
+                // }
+                // console.log(Y);
+                // console.log(M);
+              }
+              // console.log(birth.length);
+               }, 3000);
+          //   setInterval(function(){
+          //     var pass1 =document.getElementById('pwd').value;
+          //     
+            
+          //     var pass2 =document.getElementById('pwd2').value;
+          //     if(pass1 != pass2){
+          //       form.classList.add('was-validated');
+          //       console.log('ตรง')
+          //     }else{
+          //       alert("รหัส่านไม่รงกัน");
+          //     }
+          //  }
+          //   }, 1000);
+
+
+
             </script>
           </div>
           {{--  --}}
