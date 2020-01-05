@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title','Welcom to ')
+@section('title','เว็บไซต์ให้คำแนะนำการชื้อและประเมินราคาบิ๊กไบต์มือสอง')
 @section('content')
 @include('sweetalert::alert')
 

@@ -14,5 +14,7 @@ class PagersController extends Controller
     }
     public function search(){
         return view('search');
+    } public function profile(){
+        return view('profile');
     }
 }

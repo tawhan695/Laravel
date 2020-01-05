@@ -18,3 +18,4 @@ Route::post('Login','UserController@Login');
 Route::get('logout' , 'UserController@Logout');
 Route::get('recommend','PagersController@recommend');
 Route::get('search','PagersController@search');
+Route::get('profile','PagersController@profile');

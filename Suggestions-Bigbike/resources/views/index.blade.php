@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title','Welcom to ')
+@section('title','เว็บไซต์ให้คำแนะนำการชื้อและประเมินราคาบิ๊กไบต์มือสอง')
 @section('content')
 @include('sweetalert::alert')
      <!--==========================
@@ -13,7 +13,7 @@
       </div>
 
       <div class="intro-info">
-        <h2>เว็บไซต์ให้คำแนะนำ<br><span>กสารชื้อและประเมินราคา</span><br>บิ๊กไบต์มือสอง</h2>
+        <h2>เว็บไซต์ให้คำแนะนำ<br><span>การชื้อและประเมินราคา</span><br>บิ๊กไบต์มือสอง</h2>
         <div>
           <a href="#about" class="btn-get-started scrollto">รายการแนะนำสำหรับคุณ</a>
           {{-- <a href="#services" class="btn-services scrollto">Our Services</a> --}}

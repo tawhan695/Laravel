@@ -11,88 +11,65 @@ class UserController extends Controller
 {   
  
     public function Login(Request $request){
-       
-
-
-
-        // $roles = DB::table('member')->pluck('Member_name','Member_username');
-        $users = DB::table('member')->select('Member_name','Member_last_name','Member_username','Member_password','Member_email')->get();
-        foreach ($users as $name => $title) {
-     
-            
-            if($request->uname == $title->Member_username){
-                if($request->pswd ==  $title->Member_password ){
+        // ล็อกอิน ดึงข้อมูล มาจากฐานข้อมูล 
+            $results = DB::select('select * from member where Member_username = :username', ['username' => ($request->uname)]);
+            if($results != null){
+                foreach ($results as $name => $title) {
+                    if(($request->uname) == ($title->Member_username)){ 
+                        if($request->pswd ==  $title->Member_password ){
                   
-                    session()->put('user-login',$title);
-                    $user = $user = session()->get('user-login');;
-                    // echo   $user->Member_name;
-                    // echo   $user->Member_last_name;
-                    echo session()->get('user-login')->Member_username;
-                    // $value = session('user-login', 'Member_username');
-                    // echo $value;
-                    // echo   $user->Member_username;
-                    // echo   $user->Member_password;
-                    // echo   $user->Member_email;
-                    // return view('index')->with($user->Member_name);
-                     Alert::success('ล็อกอินสำเร็จ')->autoclose(2000);
-                    // toast('ล็อกอินสำเร็จ','success');
-                //<script>Swal.fire({position: 'top-end',icon: 'success',title: 'ล็อกอินสำเร็จ',showConfirmButton: false,timer: 1500})</script>
-                     return redirect('/');
-                }else{
-                    // echo "รหัสไม่ถูกต้อง";
+                            session()->put('user-login',$title);
+                             Alert::success('ล็อกอินสำเร็จ')->autoclose(2000);
+                             return redirect('/');
+                        }else{
+                             echo "รหัสไม่ถูกต้อง";
+                            Alert::error('รหัสไม่ถูกต้อง')->autoclose(2000);
+                            return redirect('/');
+                        }                    
+                    }else { //ถ้าไม่ใช่ ให้ไปหาที่ตาราง admin
+                        echo "66";
+                        Alert::error('ชื่อผู้ใช้ไม่ถูกต้อง')->autoclose(2000);
+                        return redirect('/');
+                    }
                 }
-         
-            }else{
-                // echo "ชื่อผู้ใช้ไม่ถูกต้อง";
-            }
-        }
-      
-    //    if($request->uname == 'user'){
-    //     $request-> session()->put('user',$request->input());
-    //     $user = $request->session()->get('user');
-    //     print_r($user['uname']);
-    //     $status =true;
-    //     return view('index');
-    //    }elseif($request->uname != 'user'){
-
-
-    //    }
-
-        // $request-> session()->put('info',$request->input());
-        // $info = $request->session()->get('info');
-        // print_r($info['uname']);
-        // // if(){}
+            }else {
+                $admin =  DB::select('select * from admins where Admin_username = :username', ['username' => ($request->uname)]);
+                if($admin != null){
+                    foreach ($admin as $name => $title) {
+                        if(($request->uname) == ($title->Admin_username)){ 
+                            if($request->pswd ==  $title->Admin_password ){
+                  
+                                session()->put('admin-login',$title);
+                                 Alert::success('ล็อกอินสำเร็จ')->autoclose(2000);
+                                 return redirect('/');
+                            }else{
+                                 echo "รหัสไม่ถูกต้อง";
+                                Alert::error('รหัสไม่ถูกต้อง')->autoclose(2000);
+                                return redirect('/');
+                            }
+                        }else{
+                            Alert::error('ชื่อผู้ใช้ไม่ถูกต้อง')->autoclose(2000);
+                            return redirect('/');
+                            }
+                    }
+                }else{
+                    Alert::error('ชื่อผู้ใช้ไม่ถูกต้อง')->autoclose(2000);
+                    return redirect('/');  
+                }
     }
+}
     public function Logout(){
 
         session()->forget('user-login');
+        session()->forget('admin-login');
         return redirect('/');
     }
     
 
+    
 
-    public function check_user(Request $request){
-        //   print_r($request->input());
-        //   print_r( $request -> title_name);
-
-        //   $time = strtotime();
-
+    public function check_user(Request $request){  
           $newformat = Date($request -> birth);
-
-        //   $user = new Member;
-        //   $user -> Member_id=2;
-        //   $user -> Member_titel = $request -> title_name;
-        //   $user -> Member_name = $request -> fname;
-        //   $user -> Member_last_name = $request -> Lname;
-        //   $user -> Date_birth =  $newformat;
-        //   $user -> Member_age = $request -> age;
-        //   $user -> End_heiht = $request -> heiht;
-        //   $user -> Member_username = $request -> uname;
-        //   $user -> Member_password = $request -> pswd;
-        //   $user -> Member_email =  $request -> email;
-        //   print_r($user);
-        // echo ($request -> title_name);
-        // var_dump(intval($request -> age));
         $id = DB::table('member')->insertGetId(
             [
             // 'Member_id' => nullable();
@@ -105,17 +82,10 @@ class UserController extends Controller
             'Member_username' => $request -> uname,
             'Member_password' => $request -> pswd,
             'Member_email' =>  $request -> email
-            ]
-            
-        );
-        //  dd($id);
-        // $id = DB::table('test')->insertGetId(['name' => 1]);
-     
-        // 
+            ]);
         Alert::success('สมัครสมาชิกสำเร็จ')->autoclose(2000);
-        //   $user->save();
         session()->put('user-login',$request -> fname,$request -> Lname,$request -> uname, $request -> pswd, $request -> email);
-       
+        // ตรวจเสร็จ ว่ามี ผู้ใช้ จะไปยังหน้าหลัำก
         return redirect('/');
     }
 }

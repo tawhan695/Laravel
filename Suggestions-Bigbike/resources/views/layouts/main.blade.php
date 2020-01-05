@@ -61,24 +61,34 @@
           {{-- <li><a href="">Team</a></li> --}}
           @include('sweetalert::alert')
           @if (session()->has('user-login'))
-          
           <li class="drop-down"><a href="">{{ session()->get('user-login')->Member_name}}  {{ session()->get('user-login')->Member_last_name}}</a>
             <ul>
               <li><div class="text-center"><img src="img/icons8_male_user_50px.png" alt=""></div></li>
-              <li><a href="#"  class="text-center" ><h4>{{ session()->get('user-login')->Member_name}}  {{ session()->get('user-login')->Member_last_name}}</h4></a></li>
+              <li><a href="profile"  class="text-center" ><h4>{{ session()->get('user-login')->Member_name}}  {{ session()->get('user-login')->Member_last_name}}</h4></a></li>
               <li><div class="text-center" >{{ session()->get('user-login')->Member_email}}</div></li>
-              <li><a href="">จัดการโปรไฟล์</a></li>
-              <li></li> --}}
+              <li><a href="profile">จัดการโปรไฟล์</a></li>
+              <li></li>
               <li><a href="logout" style="color:brown">ออกจากระบบ</a></li>
             </ul>
-          </li>       
+          </li> 
+          @elseif (session()->has('admin-login'))
+            <li class="drop-down"><a href="">{{ session()->get('admin-login')->Admin_name}} </a>
+              <ul>
+                <li><div class="text-center"><img src="img/icons8_male_user_50px.png" alt=""></div></li>
+                <li><a href="profile"  class="text-center" ><h4>{{ session()->get('admin-login')->Admin_name}} </h4></a></li>
+                <li><div class="text-center" >{{ session()->get('admin-login')->Admin_email}}</div></li>
+                <li><a href="profile">จัดการโปรไฟล์</a></li>
+                <li></li>
+                <li><a href="logout" style="color:brown">ออกจากระบบ</a></li>
+              </ul>
+            </li> 
           @else
               <li><a href="#contact" data-toggle="modal" data-target="#Modal-regiter">สมัครสมาชิก</a></li>
               <li><a href="#contact" data-toggle="modal" data-target="#Modal-login">ลงชื่อเข้าใช้</a></li>
               @extends('layouts.modal.login')
               @extends('layouts.modal.regiter')
           @endif
-        
+          
         </ul>
       </nav><!-- .main-nav -->
       
