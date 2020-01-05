@@ -29,6 +29,7 @@
   <link href="css/style.css" rel="stylesheet">
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
   <!-- =======================================================
     Theme Name: NewBiz
@@ -37,6 +38,7 @@
     License: https://bootstrapmade.com/license/
   ======================================================= -->
 </head>
+
 
 <body>
 
@@ -56,7 +58,7 @@
         <ul>
           <li class="active"><a href="/">หน้าหลัก</a></li>
           <li><a href="search">ค้าหารถจักรยานยนต์</a></li>
-          <li><a href="">ประเมิณราคารถจักรยานยนต์</a></li>
+          <li><a href="">ประเมินราคารถจักรยานยนต์</a></li>
           <li><a href="">เว็บบอร์ด</a></li>
           {{-- <li><a href="">Team</a></li> --}}
           @include('sweetalert::alert')
