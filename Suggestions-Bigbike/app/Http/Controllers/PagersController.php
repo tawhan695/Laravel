@@ -15,7 +15,9 @@ class PagersController extends Controller
     public function search(){
         return view('search');
     } public function profile(){
-        return view('profile');
+        $state_edit = FALSE;
+
+        return view('profile')->with('state', $state_edit);
     } public function price_estimation(){
         return view('price_estimation');
     }

@@ -15,6 +15,10 @@ Route::get('/', 'PagersController@index');
 // Route::resource('/User', 'UserController');
 Route::post('Regiter','UserController@check_user');
 Route::post('Login','UserController@Login');
+Route::post('updateprofile','UserController@updateprofile');
+
+
+
 Route::get('logout' , 'UserController@Logout');
 Route::get('recommend','PagersController@recommend');
 Route::get('search','PagersController@search');

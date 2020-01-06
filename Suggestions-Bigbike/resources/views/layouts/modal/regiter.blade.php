@@ -127,18 +127,8 @@
                 var d = new Date();
                 var d2 = new Date(birth);
                 var Y =d.getFullYear()-d2.getFullYear();
-                // var M =d.getMonth()- d2.getMonth();
-                // var D =d.getDate()-d2.getDate();
-                // var MM=0;
                 document.getElementById('age').value=Y;
-               
-                // if( M<d2.getMonth()){
-                //   M-1;
-                // }
-                // console.log(Y);
-                // console.log(M);
               }
-              // console.log(birth.length);
                }, 3000);
           //   setInterval(function(){
           //     var pass1 =document.getElementById('pwd').value;

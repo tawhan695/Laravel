@@ -19,7 +19,7 @@
             <br>
             <div class="text-center">
                 <span class="btn btn-info btn-file radius20">
-                    ค้นหารูป...<input type="file"id="imgInp" name="filename" accept="image/gif, image/jpeg, image/png">
+                    เพิ่มรูป...<input type="file"id="imgInp" name="filename" accept="image/gif, image/jpeg, image/png">
                 </span>
             </div>
            <hr>
