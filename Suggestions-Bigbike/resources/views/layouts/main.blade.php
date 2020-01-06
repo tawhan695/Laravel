@@ -11,7 +11,7 @@
   <!-- Favicons -->
   <link href="img/favicon.png" rel="icon">
   <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
@@ -56,7 +56,7 @@
         <ul>
           <li class="active"><a href="/">หน้าหลัก</a></li>
           <li><a href="search">ค้าหารถจักรยานยนต์</a></li>
-          <li><a href="">ประเมิณราคารถจักรยานยนต์</a></li>
+          <li><a href="price_estimation">ประเมิณราคารถจักรยานยนต์</a></li>
           <li><a href="">เว็บบอร์ด</a></li>
           {{-- <li><a href="">Team</a></li> --}}
           @include('sweetalert::alert')
@@ -64,7 +64,7 @@
           <li class="drop-down"><a href="">{{ session()->get('user-login')->Member_name}}  {{ session()->get('user-login')->Member_last_name}}</a>
             <ul>
               <li><div class="text-center"><img src="img/icons8_male_user_50px.png" alt=""></div></li>
-              <li><a href="profile"  class="text-center" ><h4>{{ session()->get('user-login')->Member_name}}  {{ session()->get('user-login')->Member_last_name}}</h4></a></li>
+              <li><a href="/profile"  class="text-center" ><h4>{{ session()->get('user-login')->Member_name}}  {{ session()->get('user-login')->Member_last_name}}</h4></a></li>
               <li><div class="text-center" >{{ session()->get('user-login')->Member_email}}</div></li>
               <li><a href="profile">จัดการโปรไฟล์</a></li>
               <li></li>

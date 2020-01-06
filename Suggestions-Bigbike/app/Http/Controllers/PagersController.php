@@ -16,5 +16,7 @@ class PagersController extends Controller
         return view('search');
     } public function profile(){
         return view('profile');
+    } public function price_estimation(){
+        return view('price_estimation');
     }
 }

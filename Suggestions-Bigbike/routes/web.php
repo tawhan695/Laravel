@@ -19,3 +19,4 @@ Route::get('logout' , 'UserController@Logout');
 Route::get('recommend','PagersController@recommend');
 Route::get('search','PagersController@search');
 Route::get('profile','PagersController@profile');
+Route::get('price_estimation','PagersController@price_estimation');
