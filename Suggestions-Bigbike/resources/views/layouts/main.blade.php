@@ -29,6 +29,7 @@
   <link href="css/style.css" rel="stylesheet">
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
   <!-- =======================================================
     Theme Name: NewBiz
@@ -37,6 +38,7 @@
     License: https://bootstrapmade.com/license/
   ======================================================= -->
 </head>
+
 
 <body>
 
