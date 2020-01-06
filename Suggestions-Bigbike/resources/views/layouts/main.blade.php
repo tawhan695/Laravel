@@ -56,7 +56,7 @@
         <ul>
           <li class="active"><a href="/">หน้าหลัก</a></li>
           <li><a href="search">ค้าหารถจักรยานยนต์</a></li>
-          <li><a href="price_estimation">ประเมิณราคารถจักรยานยนต์</a></li>
+          <li><a href="price_estimation">ประเมินราคารถจักรยานยนต์</a></li>
           <li><a href="">เว็บบอร์ด</a></li>
           {{-- <li><a href="">Team</a></li> --}}
           @include('sweetalert::alert')
