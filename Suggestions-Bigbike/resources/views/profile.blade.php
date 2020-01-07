@@ -145,8 +145,9 @@
 
                 </div>
                 <br>
-                <button type="button" class="btn btn-info radius20" style="float:right" id="editing">แก้ไขข้อมูลส่วนตัว</button>
-                   
+                <button type="button" class="btn btn-info radius20" style="float:right"
+                    id="editing">แก้ไขข้อมูลส่วนตัว</button>
+
             </div>
 
         </div>
@@ -213,6 +214,47 @@ $(document).ready(function() {
         for (j = 0; j < y.length; j++) {
             y[j].hidden = false;
         }
+        
+        Swal.fire({
+            title: 'Submit your Github username',
+            input: 'text',
+            inputValue: 'name',
+            inputAttributes: {
+                autocapitalize: 'off',
+                // value: "555555",
+            },
+            showCancelButton: true,
+            confirmButtonText: 'บันทึก',
+            cancelButtonText: 'ยกเลิก',
+            showLoaderOnConfirm: true,
+            preConfirm: (login) => {
+                return fetch(`//api.github.com/users/${login}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(response.statusText)
+                        }
+                        return response.json()
+                    })
+                    .catch(error => {
+                        Swal.showValidationMessage(
+                            `Request failed: ${error}`
+                        )
+                    })
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+        }).then((result) => {
+            
+            if (result.value) {
+                Swal.fire({
+                    title: `${result.value.login}'s avatar`,
+                    imageUrl: result.value.avatar_url
+                })
+            }
+        })
+
+
+
+
     });
 });
 </script>
