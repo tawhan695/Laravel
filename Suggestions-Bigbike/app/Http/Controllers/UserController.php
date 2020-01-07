@@ -84,8 +84,45 @@ class UserController extends Controller
             'Member_email' =>  $request -> email
             ]);
         Alert::success('สมัครสมาชิกสำเร็จ')->autoclose(2000);
-        session()->put('user-login',$request -> fname,$request -> Lname,$request -> uname, $request -> pswd, $request -> email);
-        // ตรวจเสร็จ ว่ามี ผู้ใช้ จะไปยังหน้าหลัำก
+        $results = DB::select('select * from member where Member_username = :username', ['username' => ($request -> uname)]);
+        foreach ($results as $name => $title) {
+           session()->put('user-login',$title);
+        }
         return redirect('/');
     }
+
+    public function updateprofile(Request $request){
+        // session()->forget('user-login');
+         $newformat = Date($request -> birth);
+        //  $dateNow = Date();
+        $id = DB::table('member')->where('Member_username', session()->get('user-login')->Member_username)->update(
+             [
+            'Member_titel' => $request -> title_name,
+            'Member_name' => $request -> fname,
+            'Member_last_name' => $request -> Lname,
+            'Date_birth'=>  $newformat,
+            'Member_age' => intval($request -> age),
+            'End_heiht' => floatval($request -> heiht),
+            // 'Member_username' => $request -> uname,
+            'Member_password' => $request -> pswd,
+            'Member_email' =>  $request -> email
+            ]);
+        //     session()->reflash();
+        $up = DB::select('select * from member where Member_username = :username', ['username' => (session()->get('user-login')->Member_username)]);
+        foreach ($up as $name => $title) {
+           session()->put('user-login',$title);
+
+        }
+
+
+         //  session()->forget('admin-login');
+        // session()->flash('status', 'Task was successful!');
+        //  session()->put('user-login',$request -> fname,$request -> Lname,$request -> uname, $request -> pswd, $request -> email);
+        // ตรวจเสร็จ ว่ามี ผู้ใช้ จะไปยังหน้าหลัำก
+        Alert::success('บันทึกสำเร็จ')->autoclose(2000);
+        return redirect('profile');
+     
+
+    }
+  
 }

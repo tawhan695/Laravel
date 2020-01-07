@@ -63,10 +63,10 @@
           {{-- <li><a href="">Team</a></li> --}}
           @include('sweetalert::alert')
           @if (session()->has('user-login'))
-          <li class="drop-down"><a href="">{{ session()->get('user-login')->Member_name}}  {{ session()->get('user-login')->Member_last_name}}</a>
+          <li class="drop-down"><a href="profile">{{ session()->get('user-login')->Member_name}}  {{ session()->get('user-login')->Member_last_name}}</a>
             <ul>
               <li><div class="text-center"><img src="img/icons8_male_user_50px.png" alt=""></div></li>
-              <li><a href="/profile"  class="text-center" ><h4>{{ session()->get('user-login')->Member_name}}  {{ session()->get('user-login')->Member_last_name}}</h4></a></li>
+              <li><a href="profile"  class="text-center" ><h4>{{ session()->get('user-login')->Member_name}}  {{ session()->get('user-login')->Member_last_name}}</h4></a></li>
               <li><div class="text-center" >{{ session()->get('user-login')->Member_email}}</div></li>
               <li><a href="profile">จัดการโปรไฟล์</a></li>
               <li></li>
