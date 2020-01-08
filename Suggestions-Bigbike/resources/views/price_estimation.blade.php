@@ -24,7 +24,7 @@
             </div>
             <hr>
             <label class="">ปีรถจักรยานยนต์บิ๊กไบค์ *</label>
-            <select name="years" class="form-control radius20" id="exampleFormControlSelect1">
+            <select name="years" class="form-control radius20" id="years">
                 @for ($i = 2000; $i <=2020; $i++) <option value="{{$i}}">{{$i}}</option>
                     @endfor
             </select>
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <div class="col-sm-8">
-                        <div><p >ปีรถจักรยานยนต์บิ๊กไบค์ : {{ $name->id }}</p></div>
+                        <div><p >ปีรถจักรยานยนต์บิ๊กไบค์ : {{ $name->years }}</p></div>
                         <div><p>ราคาประเมิน : {{ $name->appraised_price }}</p></div>
                         <div><p >ของตกแต่งรถจักรยานยนต์บิ๊กไบค์ : {{ $name->accessories }}</p></div>
                         
@@ -192,8 +192,8 @@ $(".btn-submit").click(function(e) {
     e.preventDefault();
     var items = document.getElementById('items').value;
     var price = document.getElementById('price').value;
-
     var price_bike = document.getElementById('price_bike').value;
+    var years = document.getElementById('years').value;
   
     var ii =0;
     var ITEM="";
@@ -201,7 +201,7 @@ $(".btn-submit").click(function(e) {
          ITEM+=element+" ราคา  "
          ITEM+=price_list[ii]+" บาท,";
          ii++;
-
+           });
         var filess = document.getElementById("blah").src;
         // console.log( Img);
         $.ajaxSetup({
@@ -221,8 +221,10 @@ $(".btn-submit").click(function(e) {
                 ITEM:ITEM   
             },
        success:function(data){
+       console.log(data)
+   
         Swal.fire(data.success,
-                  data.sum,
+                  data.p5,
                   
         ).then((result) => {
             if (result.value) {
