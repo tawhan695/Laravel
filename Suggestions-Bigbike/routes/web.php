@@ -16,6 +16,8 @@ Route::get('/', 'PagersController@index');
 Route::post('Regiter','UserController@check_user');
 Route::post('Login','UserController@Login');
 Route::post('updateprofile','UserController@updateprofile');
+Route::post('insertcar','UserController@insertcar');
+Route::get('showproduct','UserController@showproduct');
 
 
 
@@ -24,4 +26,5 @@ Route::get('recommend','PagersController@recommend');
 Route::get('search','PagersController@search');
 Route::get('profile','PagersController@profile');
 Route::get('price_estimation','PagersController@price_estimation');
+Route::get('formAddCar','PagersController@formAddCar');
 Route::post('calAssess','FunctionAssess@calAssess');

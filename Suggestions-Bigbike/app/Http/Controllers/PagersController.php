@@ -21,4 +21,7 @@ class PagersController extends Controller
     } public function price_estimation(){
         return view('price_estimation');
     }
+    public function formAddCar(){
+        return view('formAddCar');
+    }
 }

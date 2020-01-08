@@ -62,7 +62,7 @@
                 </div>
             </div>
             <hr>
-            <button type="button" class="btn btn-outline-info btn-block radius20 btn-submit">ประเมินราคา</button>
+            <button type="submit" class="btn btn-outline-info btn-block radius20">ประเมินราคา</button>
         </form>
     </div>
 
@@ -135,6 +135,8 @@ array.forEach(element => {
     $('#Select2').append('<option id ="' + element + '">' + element + '</option>');
 });
 var number = 0;
+var arrayItem = [];
+var arrayPrice = [];
 
 function addItems() {
     var item = document.getElementById('Select2').value;
@@ -145,12 +147,18 @@ function addItems() {
     //     item + '</strong> ราคา ' + price + ' บาท 1X </div>');
 
     $('#items').append('<div class="block-div" id="cardID' + number + '">' +
-        '<div class="col-12 row" style="margin:10px 0px 10px 0px">' + '<div class="col-6">' + item + '</div>' +
-        '<div class="col-4">' + price + '</div>' + '<div class="col-2">' +
+        '<div class="col-12 row" style="margin:10px 0px 10px 0px">' + '<div class="col-6">' + item +
+        '<input type="hidden" name="hidden_item" id="item' + number + '" value="' + item + '" />' + '</div>' +
+        '<div class="col-4">' + price + '<input type="hidden" name="hidden_price" id="price' + number +
+        '" value="' + price + '" />' + '</div>' + '<div class="col-2">' +
         '<button type="button" name="remove_details" class="btn btn-danger btn-block radius20 remove_details" style="float:right" id="' +
         number + '"> ลบ </button>' + '</div></div></div>');
 
+    arrayItem.push(item);
+    arrayPrice.push(price);
 
+    console.log(arrayItem);
+    console.log(arrayPrice);
     // $('#Select2').append('<option id ="' + item + '">' + element + '</option>');
 
     document.getElementById('Select2').value = " ";
@@ -192,20 +200,16 @@ $(document).on('click', '.remove_details', function() {
 $(".btn-submit").click(function(e) {
     e.preventDefault();
     var items = document.getElementById('items').value;
-    var years = document.getElementById('exampleFormControlSelect1').value;
-    var ddl = document.getElementById('Select2').value;
     var price = document.getElementById('price').value;
     $.ajax({
         type: 'POST',
-        url: '/FunctionAssess',
+        url: 'FunctionAssess',
         data: {
-            items: items,
-            years: years,
-            ddl: ddl,
-            price: price
+            items: arrayItem,
+            price: arrayPrice
         },
         success: function(data) {
-            console.log(data.success);
+            console(data);
         }
     });
 

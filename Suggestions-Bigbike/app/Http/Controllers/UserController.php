@@ -7,6 +7,7 @@ use App\Member;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Storage;
 class UserController extends Controller
 {   
  
@@ -123,6 +124,51 @@ class UserController extends Controller
         return redirect('profile');
      
 
+    }
+    public function insertcar(Request $request){
+        echo $request->data_name ."\n\r";
+        echo $request->Data_engine_size ."\n\r";
+        echo $request->price ."\n\r";
+        echo $request->Data_using ."\n\r";
+        echo "รูป :"."\n\r";
+        echo $request->Date_years ."\n\r";
+        echo $request->show_type ."\n\r";
+        echo $request->Ignition_system ."\n\r";
+        echo $request->Fuel_type ."\n\r";
+        echo $request->Fuel_supply_system ."\n\r";
+        echo $request->Fuel_tank_capacity ."มม."."\n\r";
+        echo $request->Suspension_system ."\n\r";
+        echo $request->Brake_system ."\n\r";
+        echo $request->Tire_size ."\n\r";
+        echo $request->weight."กก."."\n\r";
+        echo $request->age."\n\r";
+        echo $request->sex."\n\r";
+        echo $request->heigh."\n\r";
+        $SizeCar = $request->Size."x".$request->Size2."x".$request->Size3."มม."."\n\r";
+        // $id = DB::table('data')->insertGetId(
+        //     [
+        //     // 'Member_id' => nullable();
+        //     'Data_name' => $request -> Data_name,
+        //     'Data_engine_size' => floatval($request -> Data_engine_size),
+        //     'price' => $request -> price,
+        //     'Data_image'=>  " ",
+        //     'Date_years' => intval($request -> Date_years),
+        //     'show_type' => $request -> show_type,
+        //     'Ignition_system' => $request -> Ignition_system,
+        //     'Fuel_type' => $request -> Fuel_type,
+        //     'Fuel_supply_system' =>  $request -> Fuel_supply_system,
+        //     'Fuel_tank_capacity' =>  $request -> Fuel_tank_capacity,
+        //     'Suspension_system' =>  $request -> Suspension_system,
+        //     'Brake_system' =>  $request -> Brake_system,
+        //     'Tire_size' =>  $request -> Tire_size,
+        //     'Size' =>  $request -> $SizeCar,
+        //     'weight' =>  $request -> weight,
+        //     ]);
+       
+    }
+    public function showproduct(Request $request){
+        return view('showproduct');
+       
     }
   
 }
