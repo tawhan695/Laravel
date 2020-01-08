@@ -66,8 +66,6 @@ class UserController extends Controller
     }
     
 
-    
-
     public function check_user(Request $request){  
           $newformat = Date($request -> birth);
         $id = DB::table('member')->insertGetId(
@@ -108,7 +106,7 @@ class UserController extends Controller
             'Member_email' =>  $request -> email
             ]);
         //     session()->reflash();
-        $up = DB::select('select * from member where Member_username = :username', ['username' => (session()->get('user-login')->Member_username)]);
+       xc ;
         foreach ($up as $name => $title) {
            session()->put('user-login',$title);
 
@@ -124,5 +122,106 @@ class UserController extends Controller
      
 
     }
-  
+
+    public function searchdata(Request $request){
+       $type = $request->type;
+       $age = $request->age;
+       $hight = $request->hight;
+       $AGE = intval($age);
+       $HIGHT =intval($hight);
+
+    //    ขับขี่ในสนาม
+    // search:555 16
+    // search:556 188
+       if($type == 'ขับขี่ในเมือง'){
+
+                  if ($AGE  >= 41 && $AGE  <= 60) {
+
+                        if ($HIGHT  >= 180) {
+                    
+                        }elseif( $HIGHT  >= 170 && $HIGHT  <= 179){
+                        
+                        }elseif($HIGHT  >= 160 && $HIGHT  <= 169){
+                        
+                        }
+                  }elseif( $AGE  >= 21 && $AGE  <= 40){
+                        if ($HIGHT  >= 180) {
+                        
+                        }elseif( $HIGHT  >= 170 && $HIGHT  <= 179){
+                        
+                        }elseif($HIGHT  >= 160 && $HIGHT  <= 169){
+                        
+                        }
+                  }elseif($AGE  >= 15 && $AGE  <= 20){
+                        if ($HIGHT  >= 180) {
+                        
+                        }elseif( $HIGHT  >= 170 && $HIGHT  <= 179){
+                        
+                        }elseif($HIGHT  >= 160 && $HIGHT  <= 169){
+                        
+                        }
+                  }
+
+       }elseif($type == 'ขับขี่ในสนาม'){
+
+                if ($AGE  >= 41 && $AGE  <= 60) {
+
+                    if ($HIGHT  >= 180) {
+                
+                    }elseif( $HIGHT  >= 170 && $HIGHT  <= 179){
+                    
+                    }elseif($HIGHT  >= 160 && $HIGHT  <= 169){
+                    
+                    }
+            }elseif( $AGE  >= 21 && $AGE  <= 40){
+                    if ($HIGHT  >= 180) {
+                    
+                    }elseif( $HIGHT  >= 170 && $HIGHT  <= 179){
+                    
+                    }elseif($HIGHT  >= 160 && $HIGHT  <= 169){
+                    
+                    }
+            }elseif($AGE  >= 15 && $AGE  <= 20){
+                    if ($HIGHT  >= 180) {
+                      ///*************** */
+
+                    //  kawasaki
+
+                    }elseif( $HIGHT  >= 170 && $HIGHT  <= 179){
+                    
+                    }elseif($HIGHT  >= 160 && $HIGHT  <= 169){
+                    
+                    }
+      }
+            }elseif($type == 'เดินทางไกล'){
+
+                    if ($AGE  >= 41 && $AGE  <= 60) {
+
+                        if ($HIGHT  >= 180) {
+                    
+                        }elseif( $HIGHT  >= 170 && $HIGHT  <= 179){
+                        
+                        }elseif($HIGHT  >= 160 && $HIGHT  <= 169){
+                        
+                        }
+                }elseif( $AGE  >= 21 && $AGE  <= 40){
+                        if ($HIGHT  >= 180) {
+                        
+                        }elseif( $HIGHT  >= 170 && $HIGHT  <= 179){
+                        
+                        }elseif($HIGHT  >= 160 && $HIGHT  <= 169){
+                        
+                        }
+                }elseif($AGE  >= 15 && $AGE  <= 20){
+                        if ($HIGHT  >= 180) {
+                        
+                        }elseif( $HIGHT  >= 170 && $HIGHT  <= 179){
+                        
+                        }elseif($HIGHT  >= 160 && $HIGHT  <= 169){
+                        
+                        }
+                }
+       }
+      //  return response()->json(['success'=>$age]);
+    }
 }

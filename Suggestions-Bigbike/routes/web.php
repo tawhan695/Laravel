@@ -16,12 +16,13 @@ Route::get('/', 'PagersController@index');
 Route::post('Regiter','UserController@check_user');
 Route::post('Login','UserController@Login');
 Route::post('updateprofile','UserController@updateprofile');
-
-
-
+Route::post('searchdata','UserController@searchdata');
+Route::post('CalAssess','FunctionAssess@calAssess');
+// Route::get('calAssess','FunctionAssess@calAssess');
 Route::get('logout' , 'UserController@Logout');
 Route::get('recommend','PagersController@recommend');
 Route::get('search','PagersController@search');
 Route::get('profile','PagersController@profile');
 Route::get('price_estimation','PagersController@price_estimation');
-Route::post('calAssess','FunctionAssess@calAssess');
+Route::get('acc' , 'UserController@acc');
+

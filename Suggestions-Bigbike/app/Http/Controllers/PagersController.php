@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class PagersController extends Controller
@@ -19,6 +19,15 @@ class PagersController extends Controller
 
         return view('profile')->with('state', $state_edit);
     } public function price_estimation(){
-        return view('price_estimation');
+        if(session()->has('user-login')){
+            $Data = DB::table('access')->where('member_id',session()->get('user-login')->Member_id)->get();
+            try {
+              //  print_r($Data);
+                return view('price_estimation',['accessData'=>$Data]);
+            } catch (\Throwable $th) {
+                //   return view('price_chack');
+               }
+            }
+       
     }
 }
