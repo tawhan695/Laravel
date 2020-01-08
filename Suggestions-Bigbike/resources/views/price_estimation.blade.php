@@ -53,6 +53,7 @@
             <hr>
             @csrf
             <button type="button"class="btn btn-outline-info btn-block radius20 btn-submit" >ประเมินราคา</button>
+
         </form>
     </div>
 
@@ -115,6 +116,8 @@ var number = 0;
 var Item_list =[];
 var price_list=[];
 
+var arrayItem = [];
+var arrayPrice = [];
 function addItems() {
     var item = document.getElementById('Select2').value;
     var price = document.getElementById('price').value;
@@ -136,6 +139,8 @@ function addItems() {
         var Img = document.getElementById("blah").src;
         // console.log( Img);
         number = number + 1;
+
+
     // $('#Select2').append('<option id ="' + item + '">' + element + '</option>');
 
     // document.getElementById('Select2').value = " ";
@@ -186,9 +191,8 @@ $(document).on('click', '.remove_details', function() {
 $(".btn-submit").click(function(e) {
     e.preventDefault();
     var items = document.getElementById('items').value;
-    var years = document.getElementById('exampleFormControlSelect1').value;
-    var ddl = document.getElementById('Select2').value;
     var price = document.getElementById('price').value;
+
     var price_bike = document.getElementById('price_bike').value;
   
     var ii =0;
@@ -197,14 +201,7 @@ $(".btn-submit").click(function(e) {
          ITEM+=element+" ราคา  "
          ITEM+=price_list[ii]+" บาท,";
          ii++;
-    });
-    console.log(ITEM);
 
-    
-        // console.log(years)
-        // console.log(Item_list);
-       
-        // console.log( reader);
         var filess = document.getElementById("blah").src;
         // console.log( Img);
         $.ajaxSetup({
@@ -238,6 +235,7 @@ $(".btn-submit").click(function(e) {
 });
 
 </script>
+
 <style>
     #exampleFormControlSelect1 {
         border-radius: 20px;
@@ -288,3 +286,5 @@ $(".btn-submit").click(function(e) {
     }
     </style>
 @endsection
+
+

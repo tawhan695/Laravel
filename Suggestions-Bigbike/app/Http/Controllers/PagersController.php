@@ -30,4 +30,7 @@ class PagersController extends Controller
             }
        
     }
+    public function formAddCar(){
+        return view('formAddCar');
+    }
 }

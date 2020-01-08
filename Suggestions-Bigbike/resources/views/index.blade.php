@@ -35,105 +35,48 @@
           <p>รายการแนะรถจักรยานยนต์</p>
         </header>
         <div class="card-columns">
-          <div class="card" style="width:400px">
-            <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%">
-            <div class="card-body">
-              <h4 class="card-title">John Doe</h4>
-              <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-              <a href="#" class="btn btn-primary stretched-link">See Profile</a>
-            </div>
+         @for ($i = 0; $i < 10; $i++)
+         <div class="card card-1">
+          <img class="card-img-top" src="img/user-business512px.png" alt="Card image" style="width:100%">
+          <div class="card-body">
+            <h4 class="card-title">kawasaki z400</h4>
+            {{-- <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p> --}}
+            <a href="showproduct" class="btn btn-info stretched-link radius20">ดูรายละเอียด</a>
           </div>
-
-          <div class="card" style="width:400px">
-            <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%">
-            <div class="card-body">
-              <h4 class="card-title">John Doe</h4>
-              <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-              <a href="#" class="btn btn-primary stretched-link">See Profile</a>
-            </div>
-          </div>
-
-          <div class="card" style="width:400px">
-            <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%">
-            <div class="card-body">
-              <h4 class="card-title">John Doe</h4>
-              <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-              <a href="#" class="btn btn-primary stretched-link">See Profile</a>
-            </div>
-          </div>
-          <div class="card" style="width:400px">
-            <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%">
-            <div class="card-body">
-              <h4 class="card-title">John Doe</h4>
-              <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-              <a href="#" class="btn btn-primary stretched-link">See Profile</a>
-            </div>
-          </div>
-          <div class="card" style="width:400px">
-            <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%">
-            <div class="card-body">
-              <h4 class="card-title">John Doe</h4>
-              <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-              <a href="#" class="btn btn-primary stretched-link">See Profile</a>
-            </div>
-          </div>
+        </div>
+         @endfor
+        
 
         </div>
         
 
       </div>
     </section><!-- #about -->
-  {{-- <div class="container">
-     {{-- แนะนำรถ --}}
+  
+<style>
+  .card {
+  background: #fff;
+  border-radius: 2px;
+  display: inline-block;
+  height: auto;
+  margin: 1rem;
+  position: relative;
+  width: auto;
+}
 
-     <div style="background-color:crimson">
-    
-      <div class="row">
-        <div class="col-lg-4 col-md-4 portfolio-item filter-app">
-          <div class="portfolio-wrap">
-            <img src="img/portfolio/app1.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4><a href="#">App 1</a></h4>
-              <p>App</p>
-              <div>
-                <a href="img/portfolio/app1.jpg" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
-                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-4 portfolio-item filter-app">
-          <div class="portfolio-wrap">
-            <img src="img/portfolio/app1.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4><a href="#">App 1</a></h4>
-              <p>App</p>
-              <div>
-                <a href="img/portfolio/app1.jpg" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
-                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-4 portfolio-item filter-app">
-        <div class="portfolio-wrap">
-          <img src="img/portfolio/app1.jpg" class="img-fluid" alt="">
-          <div class="portfolio-info">
-            <h4><a href="#">App 1</a></h4>
-            <p>App</p>
-            <div>
-              <a href="img/portfolio/app1.jpg" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
-              <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+.card-1 {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
 
-    </div>
-  </div> --}}
+.card-1:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
 
-  <main id="main">
+.radius20 {
+    border-radius: 20px;
+}
+
+</style>
       
 @endsection

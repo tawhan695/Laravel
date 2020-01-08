@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
+
 class FunctionAssess extends Controller
 {   
     public function index(){
@@ -72,5 +74,10 @@ class FunctionAssess extends Controller
         }
       
         
+
+        echo $request->years ." ";
+        echo $request->hidden_item ." ";
+        echo $request->hidden_price;
+
     }
 }
