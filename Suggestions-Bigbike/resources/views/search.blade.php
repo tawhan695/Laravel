@@ -9,7 +9,7 @@
     <br>
     <br>
     <br>
-    <h1 class="text-center">ค้นหาจักรยานยนต์บิ๊กใบ้ที่ต้องการให้แนะนำ</h1>
+    <h1 class="text-center">ค้นหาจักรยานยนต์บิ๊กใบค์ที่ต้องการให้แนะนำ</h1>
     <br>
     <form  class="needs-validation">
  

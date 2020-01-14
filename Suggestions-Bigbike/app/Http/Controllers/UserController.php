@@ -134,32 +134,83 @@ class UserController extends Controller
     //    ขับขี่ในสนาม
     // search:555 16
     // search:556 188
-       if($type == 'ขับขี่ในเมือง'){
 
+       $s_age;
+       $s_hight;
+       $s_type;
+       $s_sex;
+       $data;
+
+       $s_sex = session()->get('user-login')->Member_titel;
+       if($s_sex == 'นาย'){
+            $s_sex = 'ชาย';
+       }elseif($s_sex == 'นาง'){
+            $s_sex = 'หญิง';
+       }elseif($s_sex == 'นางสาว'){
+            $s_sex = 'หญิง';
+       }
+
+       
+       if($type == 'ขับขี่ในเมือง'){
+                  
                   if ($AGE  >= 41 && $AGE  <= 60) {
 
                         if ($HIGHT  >= 180) {
-                    
+
+                            $s_age ='40-60';
+                            $s_hight = '180>';
+                            $s_type = 'ขับขี่ในเมือง';
+                            $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);
                         }elseif( $HIGHT  >= 170 && $HIGHT  <= 179){
-                        
+                            $s_age ='40-60';
+                            $s_hight = '170-179';
+                            $s_type = 'ขับขี่ในเมือง';
+                            $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);
                         }elseif($HIGHT  >= 160 && $HIGHT  <= 169){
-                        
+                            $s_age ='40-60';
+                            $s_hight = '160-169';
+                            $s_type = 'ขับขี่ในเมือง';
+                            $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);
                         }
                   }elseif( $AGE  >= 21 && $AGE  <= 40){
                         if ($HIGHT  >= 180) {
-                        
+                            $s_age ='21-40';
+                            $s_hight = '180>';
+                            $s_type = 'ขับขี่ในเมือง';
+                            $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);
                         }elseif( $HIGHT  >= 170 && $HIGHT  <= 179){
-                        
+                            $s_age ='21-40';
+                            $s_hight = '170-179';
+                            $s_type = 'ขับขี่ในเมือง';
+                            
+                            try {
+                                $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight AND sex = :s_sex",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight),'s_sex'=>($s_sex)]);
+                            } catch (\Throwable $th) {
+                                $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);
+                               }
+                           
                         }elseif($HIGHT  >= 160 && $HIGHT  <= 169){
-                        
+                            $s_age ='21-40';
+                            $s_hight = '160-169';
+                            $s_type = 'ขับขี่ในเมือง';
+                            $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);
                         }
                   }elseif($AGE  >= 15 && $AGE  <= 20){
                         if ($HIGHT  >= 180) {
-                        
+                            $s_age ='15-20';
+                            $s_hight = '180>';
+                            $s_type = 'ขับขี่ในเมือง';
+                            $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);
                         }elseif( $HIGHT  >= 170 && $HIGHT  <= 179){
-                        
+                            $s_age ='15-20';
+                            $s_hight = '170-179';
+                            $s_type = 'ขับขี่ในเมือง';
+                            $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);
                         }elseif($HIGHT  >= 160 && $HIGHT  <= 169){
-                        
+                            $s_age ='15-20';
+                            $s_hight = '160-169';
+                            $s_type = 'ขับขี่ในเมือง';
+                            $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);
                         }
                   }
 
@@ -168,62 +219,128 @@ class UserController extends Controller
                 if ($AGE  >= 41 && $AGE  <= 60) {
 
                     if ($HIGHT  >= 180) {
-                
+                        $s_age ='41-60';
+                        $s_hight = '180>';
+                        $s_type = 'ขับขี่ในสนาม'; 
+                        $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);                
                     }elseif( $HIGHT  >= 170 && $HIGHT  <= 179){
-                    
+                        $s_age ='41-60';
+                        $s_hight = '170-179';
+                        $s_type = 'ขับขี่ในสนาม';
+                        $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);    
                     }elseif($HIGHT  >= 160 && $HIGHT  <= 169){
-                    
+                        $s_age ='41-60';
+                        $s_hight = '160-169';
+                        $s_type = 'ขับขี่ในสนาม';
+                        $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);
                     }
             }elseif( $AGE  >= 21 && $AGE  <= 40){
-                    if ($HIGHT  >= 180) {
-                    
-                    }elseif( $HIGHT  >= 170 && $HIGHT  <= 179){
-                    
-                    }elseif($HIGHT  >= 160 && $HIGHT  <= 169){
-                    
-                    }
+                if ($HIGHT  >= 180) {
+                    $s_age ='21-40';
+                    $s_hight = '180>';
+                    $s_type = 'ขับขี่ในสนาม'; 
+                    try {
+                        $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight AND sex = :s_sex",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight),'s_sex'=>($s_sex)]);
+                    } catch (\Throwable $th) {
+                        $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);
+                       }            
+                }elseif( $HIGHT  >= 170 && $HIGHT  <= 179){
+                    $s_age ='21-40';
+                    $s_hight = '170-179';
+                    $s_type = 'ขับขี่ในสนาม';  
+                    $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);  
+                }elseif($HIGHT  >= 160 && $HIGHT  <= 169){
+                    $s_age ='21-40';
+                    $s_hight = '160-169';
+                    $s_type = 'ขับขี่ในสนาม';
+                    $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);
+                }
             }elseif($AGE  >= 15 && $AGE  <= 20){
-                    if ($HIGHT  >= 180) {
-                      ///*************** */
+                if ($HIGHT  >= 180) {
+                    $s_age ='15-20';
+                    $s_hight = '180>';
+                    $s_type = 'ขับขี่ในสนาม'; 
+                    $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);         
+                }elseif( $HIGHT  >= 170 && $HIGHT  <= 179){
+                    $s_age ='15-20';
+                    $s_hight = '170-179';
+                    $s_type = 'ขับขี่ในสนาม';
+                    $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);    
+                }elseif($HIGHT  >= 160 && $HIGHT  <= 169){
+                    $s_age ='15-20';
+                    $s_hight = '160-169';
+                    $s_type = 'ขับขี่ในสนาม';
+                    $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);
+                }
+                }
 
-                    //  kawasaki
 
-                    }elseif( $HIGHT  >= 170 && $HIGHT  <= 179){
-                    
-                    }elseif($HIGHT  >= 160 && $HIGHT  <= 169){
-                    
-                    }
-      }
             }elseif($type == 'เดินทางไกล'){
 
                     if ($AGE  >= 41 && $AGE  <= 60) {
 
                         if ($HIGHT  >= 180) {
-                    
+                            $s_age ='40-60';
+                            $s_hight = '180>';
+                            $s_type = 'เดินทางไกล';
+                            try {
+                                $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight AND sex = :s_sex",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight),'s_sex'=>($s_sex)]);
+                            } catch (\Throwable $th) {
+                                $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);
+                               }              
                         }elseif( $HIGHT  >= 170 && $HIGHT  <= 179){
-                        
+                            $s_age ='40-60';
+                            $s_hight = '170-179';
+                            $s_type = 'เดินทางไกล';
+                            $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);    
                         }elseif($HIGHT  >= 160 && $HIGHT  <= 169){
-                        
+                            $s_age ='40-60';
+                            $s_hight = '160-169';
+                            $s_type = 'เดินทางไกล';
+                            $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);
                         }
                 }elseif( $AGE  >= 21 && $AGE  <= 40){
-                        if ($HIGHT  >= 180) {
-                        
-                        }elseif( $HIGHT  >= 170 && $HIGHT  <= 179){
-                        
-                        }elseif($HIGHT  >= 160 && $HIGHT  <= 169){
-                        
-                        }
+                    if ($HIGHT  >= 180) {
+                        $s_age ='21-40';
+                        $s_hight = '180>';
+                        $s_type = 'เดินทางไกล';
+                        $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);                 
+                    }elseif( $HIGHT  >= 170 && $HIGHT  <= 179){
+                        $s_age ='21-40';
+                        $s_hight = '170-179';
+                        $s_type = 'เดินทางไกล';
+                        $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);    
+                    }elseif($HIGHT  >= 160 && $HIGHT  <= 169){
+                        $s_age ='21-40';
+                        $s_hight = '160-169';
+                        $s_type = 'เดินทางไกล';
+                        $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);
+                        try {
+                            $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight AND sex = :s_sex",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight),'s_sex'=>($s_sex)]);
+                        } catch (\Throwable $th) {
+                            $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);
+                           }
+                    }
                 }elseif($AGE  >= 15 && $AGE  <= 20){
-                        if ($HIGHT  >= 180) {
-                        
-                        }elseif( $HIGHT  >= 170 && $HIGHT  <= 179){
-                        
-                        }elseif($HIGHT  >= 160 && $HIGHT  <= 169){
-                        
-                        }
+                    if ($HIGHT  >= 180) {
+                        $s_age ='15-20';
+                        $s_hight = '180>';
+                        $s_type = 'เดินทางไกล';
+                        $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);                 
+                    }elseif( $HIGHT  >= 170 && $HIGHT  <= 179){
+                        $s_age ='15-2040-60';
+                        $s_hight = '170-179';
+                        $s_type = 'เดินทางไกล'; 
+                        $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);   
+                    }elseif($HIGHT  >= 160 && $HIGHT  <= 169){
+                        $s_age ='15-2040-60';
+                        $s_hight = '160-169';
+                        $s_type = 'เดินทางไกล';
+                        $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);
+                    }
                 }
        }
-      //  return response()->json(['success'=>$age]);
+        return response()->json(['success'=>$data]);
     }
 
     public function insertcar(Request $request){
