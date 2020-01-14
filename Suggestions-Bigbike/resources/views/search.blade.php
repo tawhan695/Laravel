@@ -60,7 +60,9 @@
 </div>
 <div class="container">
     <div class="box-shadow">
-       
+        <div class="card-columns" id="card-show">
+
+        </div>
     </div>
 </div>
 <style>
@@ -75,6 +77,29 @@
 }
 .box-shadow{
     box-shadow: 5px 5px 5px 5px #ccc;
+}
+
+.card {
+  background: #fff;
+  border-radius: 2px;
+  display: inline-block;
+  height: auto;
+  margin: 1rem;
+  position: relative;
+  width: auto;
+}
+
+.card-1 {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.card-1:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.radius20 {
+    border-radius: 20px;
 }
 
 </style>
@@ -101,7 +126,17 @@
                 hight:hight
             },
        success:function(data){
-             console.log(data);
+            console.log(data);
+            var Data_id = data.success[0].Data_id;
+            var Data_name = data.success[0].Data_name;
+            console.log(Data_name);
+            var i;
+            for (i = 0; i < 3; i++) {
+                $('#card-show').append('<div class="card card-1">' + 
+                '<img class="card-img-top" src="img/user-business512px.png" alt="Card image" style="width:100%">' + 
+                '<div class="card-body">' + '<h4 class="card-title">' + data.success[0].Data_name + '</h4>' + 
+                '<a href="showproduct" class="btn btn-info stretched-link radius20">ดูรายละเอียด</a>' + '</div></div>')
+            }
        }
     });
 });

@@ -54,7 +54,7 @@
     </section><!-- #about -->
   
 <style>
-  .card {
+.card {
   background: #fff;
   border-radius: 2px;
   display: inline-block;
