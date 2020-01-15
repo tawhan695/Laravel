@@ -384,7 +384,9 @@ class UserController extends Controller
         //     ]);
        
     }
-    public function showproduct(Request $request){
+    public function showproduct(){
+        
+        // print_r($request);
         return view('showproduct');
        
     }

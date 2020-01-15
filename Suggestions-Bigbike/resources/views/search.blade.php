@@ -126,17 +126,15 @@
                 hight:hight
             },
        success:function(data){
-            console.log(data);
-            var Data_id = data.success[0].Data_id;
-            var Data_name = data.success[0].Data_name;
-            console.log(Data_name);
-            var i;
-            for (i = 0; i < 3; i++) {
-                $('#card-show').append('<div class="card card-1">' + 
-                '<img class="card-img-top" src="img/user-business512px.png" alt="Card image" style="width:100%">' + 
-                '<div class="card-body">' + '<h4 class="card-title">' + data.success[0].Data_name + '</h4>' + 
+            arrData = data.success;
+
+            arrData.forEach(element => {
+
+                 $('#card-show').append('<div class="card card-1">' + 
+                '<img class="card-img-top" src="'+element['Data_image']+'" alt="Card image" style="width:100%">' + 
+                '<div class="card-body">' + '<h4 class="card-title">' + element['Data_name'] + '</h4>' + 
                 '<a href="showproduct" class="btn btn-info stretched-link radius20">ดูรายละเอียด</a>' + '</div></div>')
-            }
+            });
        }
     });
 });

@@ -24,7 +24,11 @@ Route::post('CalAssess','FunctionAssess@calAssess');
 Route::post('insertcar','UserController@insertcar');
 Route::get('showproduct','UserController@showproduct');
 
+// Route::get('showproduct/{id}', function ($id) {
+//     return view('showproduct');
+// });
 
+// $url = route('showproduct', ['id' => 1]);
 
 
 Route::get('logout' , 'UserController@Logout');
