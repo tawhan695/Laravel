@@ -24,7 +24,7 @@
                     <div class="col-4">
                         <div width="300px">
                             <center>
-                            <img id="blah" src="img/user-business512px.png" width="100%">
+                            <img id="blah" src="http://127.0.0.1:8000/{{$Data_image}}" width="100%">
                             </center>
                         </div>
                         {{-- <label>:</label> --}}
@@ -44,7 +44,7 @@
                         <label>:</label>
                     </div>
                     <div class="col-8">
-                        <label>kawasaki z400</label>
+                        <label>{{$Data_name}}</label>
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                         <label>:</label>
                     </div>
                     <div class="col-8">
-                        <label>400</label>
+                    <label>{{$Data_engine_size}}</label>
                     </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                         <label>:</label>
                     </div>
                     <div class="col-7">
-                        <label>186,000</label>
+                    <label>{{$price}}</label>
                     </div>
                     <div class="col-1">
                         <label>บาท</label>
@@ -89,7 +89,7 @@
                         <label>:</label>
                     </div>
                     <div class="col-8">
-                        <label>ขับขี่ในเมือง</label>
+                        <label>{{$Data_using}}</label>
                     </div>
                 </div>
             </div>
@@ -103,21 +103,7 @@
                         <label>:</label>
                     </div>
                     <div class="col-8">
-                        <label>2019</label>
-                    </div>
-                </div>
-            </div>
-            <div class="block-div">
-                <div class="col-12 row" style="margin:10px 0px 10px 0px">
-
-                    <div class="col-3">
-                        <label>ประเภท</label>
-                    </div>
-                    <div class="col-1">
-                        <label>:</label>
-                    </div>
-                    <div class="col-8">
-                        <label>แนะนำ</label>
+                        <label>{{$Date_years}}</label>
                     </div>
                 </div>
             </div>
@@ -131,7 +117,7 @@
                         <label>:</label>
                     </div>
                     <div class="col-8">
-                        <label>Battery and Coil</label>
+                    <label>{{$Ignition_system}}</label>
                     </div>
                 </div>
             </div>
@@ -145,7 +131,7 @@
                         <label>:</label>
                     </div>
                     <div class="col-8">
-                        <label>แก๊สโซฮอล์ 95 (E10), เบนซิน 95</label>
+                    <label>{{$Fuel_type}}</label>
                     </div>
                 </div>
             </div>
@@ -159,7 +145,7 @@
                         <label>:</label>
                     </div>
                     <div class="col-8">
-                        <label>หัวฉีด</label>
+                        <label>{{$Fuel_supply_system}}</label>
                     </div>
                 </div>
             </div>
@@ -173,7 +159,7 @@
                         <label>:</label>
                     </div>
                     <div class="col-7">
-                        <label>14</label>
+                        <label>{{$Fuel_tank_capacity}}</label>
                     </div>
                     <div class="col-1">
                         <label>ลิตร</label>
@@ -190,7 +176,7 @@
                         <label>:</label>
                     </div>
                     <div class="col-8">
-                        <label>ล้อหน้า เทเลสโคปิค ขนาด 41 มม., ล้อหลัง Bottom-Link Uni-Trak, gas-charged shock with adjustable preload</label>
+                        <label>{{$Suspension_system}}</label>
                     </div>
                     
                 </div>
@@ -205,7 +191,7 @@
                         <label>:</label>
                     </div>
                     <div class="col-8">
-                        <label>ล้อหน้า ดิสก์เบรก (ดิสก์เบรกขนาด 310 มม. คาลิปเปอร์ลูกสูบคู่ พร้อมระบบ ABS), ล้อหลัง ดิสก์เบรก (ดิสก์เบรกขนาด 220 มม.ดิสก์เบรกขนาด 220 มม. คาลิปเปอร์ลูกสูบคู่ พร้อมระบบ ABS)</label>
+                        <label>{{$Brake_system}}</label>
                     </div>
                     
                 </div>
@@ -220,7 +206,7 @@
                         <label>:</label>
                     </div>
                     <div class="col-8">
-                        <label>ล้อหน้า 110/70R17M/C 54H, ล้อหลัง 150/60R17M/C 66H</label>
+                        <label>{{$Tire_size}}</label>
                     </div>
                     
                 </div>
@@ -235,7 +221,7 @@
                         <label>:</label>
                     </div>
                     <div class="col-7">
-                        <label>1,990 x 800 x 1,095</label>
+                        <label>{{$Size}}</label>
                     </div>
                     <div class="col-1">
                         <label>มม.</label>
@@ -253,7 +239,7 @@
                         <label>:</label>
                     </div>
                     <div class="col-7">
-                        <label>168.00</label>
+                        <label>{{$weight}}</label>
                     </div>
                     <div class="col-1">
                         <label>กิโลกรัม</label>

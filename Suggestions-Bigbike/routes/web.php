@@ -22,9 +22,9 @@ Route::post('CalAssess','FunctionAssess@calAssess');
 // Route::get('calAssess','FunctionAssess@calAssess');
 
 Route::post('insertcar','UserController@insertcar');
-Route::get('showproduct','UserController@showproduct');
+#Route::get('showproduct','UserController@showproduct');
 
-// Route::get('showproduct/{id}', function ($id) {
+Route::get('showproduct/{id}', 'UserController@showproduct');
 //     return view('showproduct');
 // });
 

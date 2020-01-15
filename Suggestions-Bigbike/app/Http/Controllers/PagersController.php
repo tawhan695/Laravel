@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 class PagersController extends Controller
 {
     public function index(){
-        return view('index');
+        $data = DB::select("SELECT * FROM `data` WHERE `show_type` = 'ทั่วไป' LIMIT 9"); 
+        return view('index',['show_bike'=>$data]);
     }
     public function recommend(){
         return view('recommend');

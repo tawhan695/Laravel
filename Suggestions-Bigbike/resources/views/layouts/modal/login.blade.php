@@ -6,7 +6,7 @@
           <div class="modal-body">
             <button class="btn btn-outline-danger" id="close-btn"  class="close" data-dismiss="modal">X</button>
             <div class="login-body">
-              <div  id="head " class="cenn"><img class="prof" src="img/bike/prof.png" alt=""></div>
+              <div  id="head " class="cenn"><img class="prof" src="http://127.0.0.1:8000/img/bike/prof.png" alt=""></div>
               <br>
               <h2 id="head">เข้าสู่ระบบ*</h2>
               <p id="head">เว้บไซต์ให้คำแนะนำการชื้อขายและประเมินราคาบิ๊กไบค์มือสอง</p>

@@ -53,12 +53,13 @@
               </div>
         </div>
           <br>
-         <button type="button" id="submit2" class="btn btn-outline-primary btn-block" >ค้นหา</button>
+         <button  type="button" id="submit2" class="btn btn-outline-primary btn-block" >ค้นหา</button>
          {{-- <button id="btn-submit" type="submit" class="btn btn-outline-primary btn-block" >เข้าสู่ระบบ</button> --}}
 
         </form>
 </div>
 <div class="container">
+    {{session()->has('key')}}
     <div class="box-shadow">
         <div class="card-columns" id="card-show">
 
@@ -104,6 +105,20 @@
 
 </style>
     <script>
+    //     function addKey(key){
+    //         $.ajaxSetup({
+    //                 headers: {
+    //                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //                 }
+    //             });
+    //         $.ajax({
+                
+    //             url: "{{url('showproduct')}}",
+    //             key: key
+    // });
+    //        }
+
+
             $("#submit2").click(function(e) {
                 e.preventDefault();
                 var type =document.getElementById('type').value;
@@ -133,7 +148,7 @@
                  $('#card-show').append('<div class="card card-1">' + 
                 '<img class="card-img-top" src="'+element['Data_image']+'" alt="Card image" style="width:100%">' + 
                 '<div class="card-body">' + '<h4 class="card-title">' + element['Data_name'] + '</h4>' + 
-                '<a href="showproduct" class="btn btn-info stretched-link radius20">ดูรายละเอียด</a>' + '</div></div>')
+                '<a  href ="showproduct/'+element['Data_id']+'"><button   type="button" class="btn btn-info stretched-link radius20" >ดูรายละเอียด</button></a>' + '</div></div>')
             });
        }
     });

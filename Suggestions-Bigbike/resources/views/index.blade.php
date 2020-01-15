@@ -35,16 +35,18 @@
           <p>รายการแนะรถจักรยานยนต์</p>
         </header>
         <div class="card-columns">
-         @for ($i = 0; $i < 10; $i++)
-         <div class="card card-1">
-          <img class="card-img-top" src="img/user-business512px.png" alt="Card image" style="width:100%">
-          <div class="card-body">
-            <h4 class="card-title">kawasaki z400</h4>
-            {{-- <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p> --}}
-            <a href="showproduct" class="btn btn-info stretched-link radius20">ดูรายละเอียด</a>
-          </div>
-        </div>
-         @endfor
+
+          @foreach ($show_bike as $item)
+            <div class="card card-1">
+              <img class="card-img-top" src="{{$item->Data_image}}" alt="Card image" style="width:100%">
+              <div class="card-body">
+                <h4 class="card-title">{{$item->Data_name}}</h4>
+                {{-- <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p> --}}
+                <a href="showproduct/{{$item->Data_id}}" class="btn btn-info stretched-link radius20">ดูรายละเอียด</a>
+              </div>
+            </div>
+          @endforeach
+     
         
 
         </div>
