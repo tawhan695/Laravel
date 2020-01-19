@@ -39,4 +39,10 @@ Route::get('price_estimation','PagersController@price_estimation');
 
 Route::get('formAddCar','PagersController@formAddCar');
 Route::post('calAssess','FunctionAssess@calAssess');
+Route::post('addPost','BoradController@store');
 
+Route::get('borad','BoradController@index'); //เว็บบอร์ด
+
+Route::get('view_post/{id}','BoradController@show'); // วิว เว็บบอร์ด
+Route::post('ShowComment','BoradController@comment'); // วิว เว็บบอร์ด
+Route::post('addComment','BoradController@addComment'); // วิว เว็บบอร์ด

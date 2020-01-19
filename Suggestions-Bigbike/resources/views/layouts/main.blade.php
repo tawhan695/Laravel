@@ -59,7 +59,7 @@
           <li class="active"><a href="/">หน้าหลัก</a></li>
           <li><a href="/search">ค้าหารถจักรยานยนต์</a></li>
           <li><a href="/price_estimation">ประเมินราคารถจักรยานยนต์</a></li>
-          <li><a href="">เว็บบอร์ด</a></li>
+          <li><a href="/borad">เว็บบอร์ด</a></li>
           {{-- <li><a href="">Team</a></li> --}}
           @include('sweetalert::alert')
           @if (session()->has('user-login'))
@@ -68,7 +68,7 @@
               <li><div class="text-center"><img src="http://127.0.0.1:8000/img/icons8_male_user_50px.png" alt=""></div></li>
               <li><a href="profile"  class="text-center" ><h4>{{ session()->get('user-login')->Member_name}}  {{ session()->get('user-login')->Member_last_name}}</h4></a></li>
               <li><div class="text-center" >{{ session()->get('user-login')->Member_email}}</div></li>
-              <li><a href="profile">จัดการโปรไฟล์</a></li>
+              <li><a href="/profile">จัดการโปรไฟล์</a></li>
               <li></li>
               <li><a href="logout" style="color:brown">ออกจากระบบ</a></li>
             </ul>
@@ -77,9 +77,9 @@
             <li class="drop-down"><a href="">{{ session()->get('admin-login')->Admin_name}} </a>
               <ul>
                 <li><div class="text-center"><img src="http://127.0.0.1:8000/img/icons8_male_user_50px.png" alt=""></div></li>
-                <li><a href="profile"  class="text-center" ><h4>{{ session()->get('admin-login')->Admin_name}} </h4></a></li>
+                <li><a href="/profile"  class="text-center" ><h4>{{ session()->get('admin-login')->Admin_name}} </h4></a></li>
                 <li><div class="text-center" >{{ session()->get('admin-login')->Admin_email}}</div></li>
-                <li><a href="profile">จัดการโปรไฟล์</a></li>
+                <li><a href="/profile">จัดการโปรไฟล์</a></li>
                 <li></li>
                 <li><a href="logout" style="color:brown">ออกจากระบบ</a></li>
               </ul>
