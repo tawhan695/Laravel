@@ -37,6 +37,25 @@
     Author: BootstrapMade.com
     License: https://bootstrapmade.com/license/
   ======================================================= -->
+
+<script>
+
+// Get the container element
+var btnContainer = document.getElementById("AAA");
+
+// Get all buttons with class="btn" inside the container
+var btns = btnContainer.getElementsByClassName("nav-link");
+
+// Loop through the buttons and add the active class to the current/clicked button
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+
+</script>
 </head>
 
 
@@ -55,24 +74,39 @@
       </div>
 
       <nav class="main-nav float-right d-none d-lg-block">
-        <ul>
-          <li class="active"><a href="/">หน้าหลัก</a></li>
-          <li><a href="/search">ค้าหารถจักรยานยนต์</a></li>
-          <li><a href="/price_estimation">ประเมินราคารถจักรยานยนต์</a></li>
-          <li><a href="/borad">เว็บบอร์ด</a></li>
+        <ul class="AAA">
+          <li class="nav-link"><a href="/">หน้าหลัก</a></li>
+          @if (session()->has('user-login')){{--โชว์เมื่อเป้นสมาชิก--}}
+
+          <li><a href="/search" class="nav-link">ค้าหารถจักรยานยนต์</a></li>
+          <li><a href="/price_estimation" class="nav-link">ประเมินราคารถจักรยานยนต์</a></li>
+          <li><a href="/borad" class="nav-link">เว็บบอร์ด</a></li>
+   
+          @elseif(session()->has('admin-login')){{-- สำหรับ admin จะดชวเมื่อ แอด ล็อกอิน --}}
+          <li><a href="/borad" >เว็บบอร์ด</a></li>
+          <li><a href="/formAddCar" >เพิ่มรถจักรยานยนต์</a></li>
+          
+          @else  {{--โชว์เมื่อเป้นผู้ใช้ทั่วไป--}}
+          <li><a href="#"  data-toggle="modal" data-target="#Modal-login">ค้าหารถจักรยานยนต์</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#Modal-login">ประเมินราคารถจักรยานยนต์</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#Modal-login">เว็บบอร์ด</a></li>
+          @endif
+          
           {{-- <li><a href="">Team</a></li> --}}
           @include('sweetalert::alert')
+          {{-- สำหรับ user จะโชว์เมื่ิอ ผู้ใช้ล็อกอิน --}}
           @if (session()->has('user-login'))
-          <li class="drop-down"><a href="profile">{{ session()->get('user-login')->Member_name}}  {{ session()->get('user-login')->Member_last_name}}</a>
+          <li class="drop-down"><a href="/profile">{{ session()->get('user-login')->Member_name}}  {{ session()->get('user-login')->Member_last_name}}</a>
             <ul>
               <li><div class="text-center"><img src="http://127.0.0.1:8000/img/icons8_male_user_50px.png" alt=""></div></li>
-              <li><a href="profile"  class="text-center" ><h4>{{ session()->get('user-login')->Member_name}}  {{ session()->get('user-login')->Member_last_name}}</h4></a></li>
+              <li><a href="/profile"  class="text-center" ><h4>{{ session()->get('user-login')->Member_name}}  {{ session()->get('user-login')->Member_last_name}}</h4></a></li>
               <li><div class="text-center" >{{ session()->get('user-login')->Member_email}}</div></li>
               <li><a href="/profile">จัดการโปรไฟล์</a></li>
               <li></li>
-              <li><a href="logout" style="color:brown">ออกจากระบบ</a></li>
+              <li><a href="/logout" style="color:brown">ออกจากระบบ</a></li>
             </ul>
           </li> 
+          {{-- สำหรับ admin จะดชวเมื่อ แอด ล็อกอิน --}}
           @elseif (session()->has('admin-login'))
             <li class="drop-down"><a href="">{{ session()->get('admin-login')->Admin_name}} </a>
               <ul>
@@ -81,7 +115,7 @@
                 <li><div class="text-center" >{{ session()->get('admin-login')->Admin_email}}</div></li>
                 <li><a href="/profile">จัดการโปรไฟล์</a></li>
                 <li></li>
-                <li><a href="logout" style="color:brown">ออกจากระบบ</a></li>
+                <li><a href="/logout" style="color:brown">ออกจากระบบ</a></li>
               </ul>
             </li> 
           @else

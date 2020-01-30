@@ -11,13 +11,6 @@
                  <img src="/storage/icons8_chat_128px.png" alt="" width="5%">
                  <label onclick="AddPost()" class="text-wite">ตั้งกระทู้</label>
             </div>
-
-             {{-- <ul>
-                 
-                 <li><span style=""><img src="/storage/icons8_chat_128px.png" alt=""></span> ตั้งกระทู้</li>
-             </ul> --}}
-
-            
         </div>
         {{-- add post --}}
          <div class="container_post shadow" id="container_post"> 
@@ -42,48 +35,27 @@
                 <button type="submit" class="btn btn-primary border-radius">โพส</button>
                 <button type="button" onclick="CanclosePost()" class="btn btn-danger border-radius">ยกเลิก</button>
               </form>
+              
          </div>
          {{-- <img src="{{url('storage/bab7yRaiPSW6TvBZKrxXfVk9e8v8jesH9DyEJeHl.png')}}" alt=""> --}}
+
          @foreach ($board_posts as $item)
-         <a href=" /view_post/{{$item->web_board_posts_id}}">
-            <div class="post_list "> {{-- กะทู้ --}}
-                <div class="media border p-3 shadow">
+         <div class="post_list "> {{-- กะทู้ --}}
+             <a href=" /view_post/{{$item->web_board_posts_id}}">
+             <div class="media border p-3 shadow">
+
                     <img src="{{$item->Web_board_imge}}" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:20%;">
                     <div class="media-body">
                       <h4>{{$item->Web_board_posts_name_post}}<small><br><i>{{$item->massages_date}}  {{$item->massages_time}}</i></small></h4>
                       <p>{{$item->web_board_posts_name}}</p>
                       
                     </div>
-                  </div>
+                    {{-- <button class="btn btn-dark" type="button">ลบ</button> --}}
+                </div>
+                {{-- <a href="/" class="222"></a> --}}
+            </a>
              </div>
-         </a>
-         
          @endforeach
-        
-                       {{-- ***/ --}}
-                       {{-- <div class="media">
-                        <img class="d-flex rounded-circle avatar z-depth-1-half mr-3" src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg"
-                          alt="Avatar">
-                        <div class="media-body">
-                          <h5 class="mt-0 font-weight-bold blue-text">Anna Smith</h5>
-                          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
-                          odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
-                          fringilla. Donec lacinia congue felis in faucibus.
-                      
-                          <div class="media mt-3 shadow-textarea">
-                            <img class="d-flex rounded-circle avatar z-depth-1-half mr-3" src="https://mdbootstrap.com/img/Photos/Avatars/avatar-8.jpg"
-                              alt="Generic placeholder image">
-                            <div class="media-body">
-                              <h5 class="mt-0 font-weight-bold blue-text">Danny Tatuum</h5>
-                              <div class="form-group basic-textarea rounded-corners">
-                                <textarea class="form-control z-depth-1" id="exampleFormControlTextarea345" rows="3" placeholder="Write your comment..."></textarea>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div> --}}
-                      
-                      {{-- **** --}}
     </div>
 </div>
 <script>

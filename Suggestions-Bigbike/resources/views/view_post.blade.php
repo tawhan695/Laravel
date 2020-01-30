@@ -16,15 +16,9 @@
         <br><br>
         <p class="text-info">{{$item->Web_board_message}}</p>
         <p class="text-secondary ">โพสเมื่อ {{$item->massages_date}}  {{$item->massages_time}}</p><br>
-        {{-- <hr>
-        <div class="media p-3">
-            <img src="https://www.w3schools.com/bootstrap4/img_avatar2.png" alt="Jane Doe" class="mr-3 mt-3 rounded-circle" style="width:45px;">
-            <div class="media-body">
-              <h4>Jane Doe <small><i>Posted on February 20 2016</i></small></h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-          </div>  --}}
+        @if (session()->has('admin-login') || session()->get('user-login')->Member_name == $item->web_board_posts_name )            
+        <button id="Delete" class="btn btn-danger">ลบโพส</button>            
+        @endif                                                                                                                                                                                                                                           
     </div>  
     </div>
   </div>
@@ -35,7 +29,27 @@
 
   <script>
     $(document).ready(function(){
+       $('#Delete').click(function(){
+        Swal.fire({
+                title: 'คุณแน่ใจไหม?',
+                text: "ที่จะลบสิ่งนี้",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+              }).then((result) => {
+                if (result.value) {
+                  Swal.fire(
+                    'ลบเรียบร้อย!',
+                    '',
+                    'success'
+                  )
+                  window.location.replace("/delete_post/{{$item->web_board_posts_id}}");
+                }
+              });
 
+       });
         var id ={{$item->web_board_posts_id}} ;
         $.ajax({
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },

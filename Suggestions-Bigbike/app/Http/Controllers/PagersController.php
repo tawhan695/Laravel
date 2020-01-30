@@ -34,4 +34,16 @@ class PagersController extends Controller
     public function formAddCar(){
         return view('formAddCar');
     }
+    // public function AddCar(Request $request){
+        
+    //     print_r($request->all());
+
+    //     $request->Size;  //ขนาด (ยาว
+    //     $request->Size2;  //ขนาด (กว้าง
+    //     $request->Size3;  //ขนาด xสูง มม.)
+
+
+       
+    // }
+
 }

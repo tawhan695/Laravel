@@ -11,7 +11,7 @@
         <h6 class="root-text-color root-text-center">จัดการเพิ่มข้อมูลสินค้า</h6>
     </div>
     <br>
-    <form action="insertcar" method="post" ecctype="multipart/form-data">
+    <form action="/insertcar" method="post" enctype="multipart/form-data">
         @csrf
         <div class="col-12">
             <div class="card">
@@ -87,10 +87,10 @@
                                 <label>:</label>
                             </div>
                             <div class="col-7">
-                                <span class="btn btn-info btn-file radius20">
-                                    เพิ่มรูป...<input type="file" id="imgInp" name="imgInp"
+                                
+                                    <input type="file" id="imgInp2" name="imgInp"
                                         accept="image/gif, image/jpeg, image/png">
-                                </span>
+                                
                                 <div width="300px">
                                     <img id="blah" src="#" name="bike" alt="your image" width="100%"
                                         style="display:none">
@@ -388,7 +388,7 @@ h3.text-center {
 }
 </style>
 <script>
-$("#imgInp").change(function() {
+$("#imgInp2").change(function() {
     readURL(this);
 });
 var reader = new FileReader();

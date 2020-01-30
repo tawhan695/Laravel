@@ -247,11 +247,43 @@
                     
                 </div>
             </div>
-
+            
         </div>
     </div>
+         <br>
+         @if (session()->has('admin-login'))
+             
+         <div class="float-right">
+             <button type="reset" class="btn btn-warning radius20">แก้ไข</button>
+             <form action="/deleteCar" method="post">
+               @csrf
+                <input type="text" name="idd" hidden value="{{$Data_id}}" >
+                <button type="submit" class="btn btn-danger radius20" >ลบข้อมูล</button>
+             </form>
+           
+         </div>
+         @endif
 </div>
-
+  <script>
+          $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+        $.ajax({
+            type:'POST',
+            url:"{{url('/deleteCar')}}",
+            data:{
+                type:type,
+                age:age,
+                hight:hight
+            },
+       success:function(data){
+            arrData = data.success;
+   
+       }
+    });
+  </script>
 <style>
 #div-box {
     margin-top: 10%;

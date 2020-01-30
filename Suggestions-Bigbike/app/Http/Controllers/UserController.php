@@ -107,7 +107,7 @@ class UserController extends Controller
             'Member_email' =>  $request -> email
             ]);
         //     session()->reflash();
-       xc ;
+    //    xc ;
         foreach ($up as $name => $title) {
            session()->put('user-login',$title);
 
@@ -157,17 +157,17 @@ class UserController extends Controller
 
                         if ($HIGHT  >= 180) {
 
-                            $s_age ='40-60';
+                            $s_age ='41-60';
                             $s_hight = '180>';
                             $s_type = 'ขับขี่ในเมือง';
                             $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);
                         }elseif( $HIGHT  >= 170 && $HIGHT  <= 179){
-                            $s_age ='40-60';
+                            $s_age ='41-60';
                             $s_hight = '170-179';
                             $s_type = 'ขับขี่ในเมือง';
                             $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);
                         }elseif($HIGHT  >= 160 && $HIGHT  <= 169){
-                            $s_age ='40-60';
+                            $s_age ='41-60';
                             $s_hight = '160-169';
                             $s_type = 'ขับขี่ในเมือง';
                             $data = DB::select("select * from data where Data_using = :s_type AND age=:s_age AND height =:s_hight",['s_type' => ($s_type),'s_age'=>($s_age),'s_hight'=>($s_hight)]);
@@ -344,52 +344,66 @@ class UserController extends Controller
     }
 
     public function insertcar(Request $request){
-        echo $request->data_name ."\n\r";
-        echo $request->Data_engine_size ."\n\r";
-        echo $request->price ."\n\r";
-        echo $request->Data_using ."\n\r";
-        echo "รูป :"."\n\r";
-        echo $request->Date_years ."\n\r";
-        echo $request->show_type ."\n\r";
-        echo $request->Ignition_system ."\n\r";
-        echo $request->Fuel_type ."\n\r";
-        echo $request->Fuel_supply_system ."\n\r";
-        echo $request->Fuel_tank_capacity ."มม."."\n\r";
-        echo $request->Suspension_system ."\n\r";
-        echo $request->Brake_system ."\n\r";
-        echo $request->Tire_size ."\n\r";
-        echo $request->weight."กก."."\n\r";
-        echo $request->age."\n\r";
-        echo $request->sex."\n\r";
-        echo $request->heigh."\n\r";
-        $SizeCar = $request->Size."x".$request->Size2."x".$request->Size3."มม."."\n\r";
-        // $id = DB::table('data')->insertGetId(
-        //     [
-        //     // 'Member_id' => nullable();
-        //     'Data_name' => $request -> Data_name,
-        //     'Data_engine_size' => floatval($request -> Data_engine_size),
-        //     'price' => $request -> price,
-        //     'Data_image'=>  " ",
-        //     'Date_years' => intval($request -> Date_years),
-        //     'show_type' => $request -> show_type,
-        //     'Ignition_system' => $request -> Ignition_system,
-        //     'Fuel_type' => $request -> Fuel_type,
-        //     'Fuel_supply_system' =>  $request -> Fuel_supply_system,
-        //     'Fuel_tank_capacity' =>  $request -> Fuel_tank_capacity,
-        //     'Suspension_system' =>  $request -> Suspension_system,
-        //     'Brake_system' =>  $request -> Brake_system,
-        //     'Tire_size' =>  $request -> Tire_size,
-        //     'Size' =>  $request -> $SizeCar,
-        //     'weight' =>  $request -> weight,
-        //     ]);
-       
+      ///  print_r($request->all());
+
+        // $request->data_name;          // ชื่อสินค้า
+        // $request->Data_engine_size;   //ขนาดเครื่องยนต์
+        // $request->price;   //ราคา
+        
+        //$img = $request->file('imgInp');
+        $img = $request->file('imgInp')->store('public');
+        // print_r(str_replace("public","storage", $img));
+        // print_r($img);
+        // $request->imgInp;  //เพิ่มรูป
+        // $request->Date_years;   //ปีที่ผลิต
+        // $request->show_type;   //ประเภท
+        // $request->Ignition_system;   //ระบบจุดระเบิด
+        // $request->Fuel_type;   //ประเภทน้ำมันเชื้อเพลิง
+        // $request->Fuel_supply_system;   //ระบบจ่ายน้ำมันเชื้อเพลิง
+        // $request->Fuel_tank_capacity;   //ความจุถังน้ำมันเชื้อเพลิง
+        // $request->Suspension_system;   //ระบบกันสะเทือน
+        // $request->Brake_system;   //ระบบเบรก        
+        // $request->Tire_size;  //ขนาดยาง
+        // $request->weight;   
+        $SizeCar = $request->Size."x".$request->Size2."x".$request->Size3."มม.";
+   //    print_r( $SizeCar);
+      try {
+        $id = DB::table('data')->insertGetId(
+            [
+            // 'Member_id' => nullable();
+            'Data_name' => $request->data_name,
+            'Data_engine_size' =>floatval($request ->Data_engine_size),
+            'price' => $request ->price,
+            'Data_using'=>$request->Data_using,   //ประเภทการใช้งาน
+            'Data_image'=>str_replace("public","storage", $img),
+            'Date_years' => intval($request ->Date_years),
+            'show_type' => $request ->show_type,
+            'Ignition_system' => $request ->Ignition_system,
+            'Fuel_type' => $request ->Fuel_type,
+            'Fuel_supply_system' =>  $request ->Fuel_supply_system,
+            'Fuel_tank_capacity' =>  $request ->Fuel_tank_capacity,
+            'Suspension_system' =>  $request ->Suspension_system,
+            'Brake_system' =>  $request ->Brake_system,
+            'Tire_size' =>  $request ->Tire_size,
+            'Size' => $SizeCar,
+            'weight' =>  $request ->weight,//น้ำหนัก (กก.)
+            'age'=>$request->age,//ช่วงอายุการตัดสินใจ
+            'sex'=>$request->sex, //เพศ
+            'height'=>$request->heigh,//ความสูงของคน
+            ]); 
+            Alert::success('บันทึกสำเร็จ')->autoclose(2000);
+            return redirect('showproduct/'.$id);
+      } catch (\Throwable $th) {
+        Alert::error('กรอกข้อมูลไม่ครบท้วน')->autoclose(2000);
+        return view('/formAddCar');
+      }
     }
     public function showproduct($id){
         
        $data = DB::select("select * from data where Data_id = :id ",['id' => ($id)]);     
         
         foreach($data as $title){
-           # $name = $title->Data_name;
+            $Data_id = $title->Data_id;
             $Data_name= $title->Data_name;
             $Data_engine_size= $title->Data_engine_size;
             $price= $title->price ;
@@ -407,9 +421,30 @@ class UserController extends Controller
             $Size= $title->Size;
             $weight = $title->weight;
         }    
+        $Chack = DB::select('SELECT * FROM recommendation WHERE id_member =:id_m AND id_data = :id_d',['id_m'=>session()->get('user-login')->Member_id,'id_d'=>$id]);
+        $arrlength = count($Chack);
+        if($arrlength == 0){  // ถ้าเป็น 0 แสดงว่าไม่มีการบันทึก ให้สร้าง
+            DB::table('recommendation')->insertGetId([
+                'id_member'=>session()->get('user-login')->Member_id,
+                'id_data'=>$id,
+                'count'=>1
+            ]);
+        }else{
+
+            foreach($Chack as $value){
+               $Count = $value->count;
+               $IDD = $value->id;
+            }
+            $update = DB::table('recommendation')
+            ->where('id', $IDD)
+            ->update(['count' => $Count+1]);
+
+        }
+
        try {
                 return view('showproduct',
                 [
+                 'Data_id'=>$Data_id,    
                 'Data_name'=>$Data_name,
                 'Data_engine_size'=>$Data_engine_size,
                 'price'=>$price,
@@ -429,6 +464,64 @@ class UserController extends Controller
         ]); 
        } catch (\Throwable $th) {
            //throw $th;
-       }                   
-    } 
+       }
+
+
+}
+    
+    public function deleteCar(Request $request){
+        
+        try {
+            DB::table('data')->where('Data_id', '>', $request->idd)->delete();
+            Alert::success('ลบสำเร็จ')->autoclose(1000);
+            return redirect('/');
+            //code...
+        } catch (\Throwable $th) {
+
+           
+            $data = DB::select("select * from data where Data_id = :id ",['id' => ($request->idd)]);     
+        
+            foreach($data as $title){
+                $Data_id = $title->Data_id;
+                $Data_name= $title->Data_name;
+                $Data_engine_size= $title->Data_engine_size;
+                $price= $title->price ;
+                $Data_using= $title->Data_using;
+                $Data_image= $title->Data_image;
+                $Date_years= $title->Date_years;
+                $show_type= $title->show_type;
+                $Ignition_system = $title->Ignition_system;
+                $Fuel_type= $title->Fuel_type;
+                $Fuel_supply_system = $title->Fuel_supply_system;
+                $Fuel_tank_capacity= $title->Fuel_tank_capacity;
+                $Suspension_system= $title->Suspension_system;
+                $Brake_system= $title->Brake_system;
+                $Tire_size = $title->Tire_size;
+                $Size= $title->Size;
+                $weight = $title->weight;
+            }    
+            Alert::error('เกิดข้อผิดพลาด')->autoclose(1000);
+                    return view('showproduct',
+                    [
+                     'Data_id'=>$Data_id,    
+                    'Data_name'=>$Data_name,
+                    'Data_engine_size'=>$Data_engine_size,
+                    'price'=>$price,
+                    'Data_using'=>$Data_using,
+                    'Data_image'=>$Data_image,
+                    'Date_years'=>$Date_years,
+                    'show_type'=>$show_type,
+                    'Ignition_system'=>$Ignition_system,
+                    'Fuel_type'=>$Fuel_type,
+                    'Fuel_supply_system'=>$Fuel_supply_system,
+                    'Fuel_tank_capacity'=>$Fuel_tank_capacity,
+                    'Suspension_system'=>$Suspension_system,
+                    'Brake_system'=>$Brake_system,
+                    'Tire_size'=>$Tire_size,
+                    'Size'=>$Size,
+                    'weight' =>$weight
+            ]); 
+        }
+
+    }
 }

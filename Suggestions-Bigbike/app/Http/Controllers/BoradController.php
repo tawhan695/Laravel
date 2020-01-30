@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 // use Illuminate\Http\Request;
 
 class BoradController extends Controller
@@ -60,6 +61,10 @@ class BoradController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function delete($id){
+        $data = DB::select('DELETE FROM web_board_posts WHERE web_board_posts.web_board_posts_id = :num',['num'=>$id]); 
+        return redirect('borad');
+    }
     public function show($id)
     {   
         $data = DB::select('SELECT * FROM web_board_posts WHERE web_board_posts_id = :num ',['num'=>$id]); 
