@@ -7,15 +7,32 @@
   ============================-->
   <section id="intro" class="clearfix">
     <div class="container">
-      <div class="container h-100">
+     
+      {{-- <div class="container h-100">
         <div class="d-flex justify-content-center h-100">
           <div class="searchbar">
             <input class="search_input" type="text" name="" placeholder="Search...">
             <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
           </div>
         </div>
-      </div>
+      </div> --}}
 
+      
+      <form action="/search_bike" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="input-group">
+            <input type="text" class="form-control-lg searchbar" placeholder="ค้าหา.." name="name" >
+            <div class="input-group-append">
+              <input class="btn btn-secondary searchbar2 fa fa-search" type="submit" value="ค้าหา">
+                {{-- <i class=""></i> --}}
+              
+            </div>
+          </div>
+    </form>
+      <br>
+      <br>
+      <br>
+      
       <div class="intro-img">
         <img src="img/intro-img.svg" alt="" class="img-fluid">
       </div>
@@ -39,10 +56,9 @@
 
         <header class="section-header">
           <h3>แนะนำ</h3>
-          <p>รายการแนะรถจักรยานยนต์</p>
+          <p>{{$title}}</p>
         </header>
         <div class="card-columns">
-
           @foreach ($show_bike as $item)
             <div class="card card-1">
               <img class="card-img-top" src="{{$item->Data_image}}" alt="Card image" style="width:100%">
@@ -53,9 +69,6 @@
               </div>
             </div>
           @endforeach
-     
-        
-
         </div>
         
 
@@ -89,48 +102,15 @@
 
 
 .searchbar{
-    margin-bottom: auto;
-    margin-top: auto;
-    height: 60px;
-    background-color: #353b48;
-    border-radius: 30px;
-    padding: 10px;
-    }
 
-    .search_input{
-    color: white;
-    border: 0;
-    outline: 0;
-    background: none;
-    width: 0;
-    caret-color:transparent;
-    line-height: 40px;
-    transition: width 0.4s linear;
-    }
+    border-radius: 20px 0px 0px 20px; 
 
-    .searchbar:hover > .search_input{
-    padding: 0 10px;
-    width: 450px;
-    caret-color:red;
-    transition: width 0.4s linear;
     }
+.searchbar2{
 
-    .searchbar:hover > .search_icon{
-    background: white;
-    color: #e74c3c;
-    }
+border-radius: 0px 20px 20px 0px; 
 
-    .search_icon{
-    height: 40px;
-    width: 40px;
-    float: right;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    color:white;
-    text-decoration:none;
-    }
+}
 </style>
       
 @endsection

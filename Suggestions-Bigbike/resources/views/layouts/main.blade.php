@@ -84,7 +84,8 @@ for (var i = 0; i < btns.length; i++) {
    
           @elseif(session()->has('admin-login')){{-- สำหรับ admin จะดชวเมื่อ แอด ล็อกอิน --}}
           <li><a href="/borad" >เว็บบอร์ด</a></li>
-          <li><a href="/formAddCar" >เพิ่มรถจักรยานยนต์</a></li>
+          <li><a href="/data_management" >จัดการข้อมูลรถจักรยานยนต์</a></li>
+          {{-- <li><a href="/formAddCar" >เพิ่มรถจักรยานยนต์</a></li> --}}
           
           @else  {{--โชว์เมื่อเป้นผู้ใช้ทั่วไป--}}
           <li><a href="#"  data-toggle="modal" data-target="#Modal-login">ค้าหารถจักรยานยนต์</a></li>

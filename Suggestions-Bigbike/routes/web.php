@@ -26,6 +26,8 @@ Route::post('deleteCar','UserController@deleteCar');  // ลบข้อมู�
 #Route::get('showproduct','UserController@showproduct');
 
 Route::get('showproduct/{id}', 'UserController@showproduct');
+Route::get('editproduct/{id}', 'UserController@editproduct');
+Route::post('editbike', 'UserController@editbike');
 //     return view('showproduct');
 // });
 
@@ -35,10 +37,12 @@ Route::get('showproduct/{id}', 'UserController@showproduct');
 Route::get('logout' , 'UserController@Logout');
 Route::get('recommend','PagersController@recommend');
 Route::get('search','PagersController@search');
+Route::post('search_bike','PagersController@search_bike');
 Route::get('profile','PagersController@profile');
 Route::get('price_estimation','PagersController@price_estimation');
 
 Route::get('formAddCar','PagersController@formAddCar');
+Route::get('data_management','PagersController@data_management');
 Route::post('AddCar','PagersController@AddCar');
 Route::post('calAssess','FunctionAssess@calAssess');
 Route::post('addPost','BoradController@store');
