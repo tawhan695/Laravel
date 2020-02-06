@@ -259,31 +259,42 @@
              <form action="/deleteCar" method="post">
                @csrf
                 <input type="text" name="idd" hidden value="{{$Data_id}}" >
-                <button type="submit" class="btn btn-danger radius20" >ลบข้อมูล</button>
+                <button type="" class="btn btn-danger radius20" onclick="del()">ลบข้อมูล</button>
              </form>
            
          </div>
          @endif
 </div>
   <script>
-          $.ajaxSetup({
+
+    function del(){
+        Swal.fire({
+            title: 'ยืนยันการลบ?',
+            // text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ลบ!'
+            }).then((result) => {
+            if (result.value) {
+                $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
-        $.ajax({
-            type:'POST',
-            url:"{{url('/deleteCar')}}",
-            data:{
-                type:type,
-                age:age,
-                hight:hight
-            },
-       success:function(data){
-            arrData = data.success;
-   
-       }
-    });
+                    $.ajax({
+                        type:'POST',
+                        url:"{{url('/deleteCar')}}",
+                        data:{
+                            idd:{{$Data_id}}
+                        }
+                    });
+
+
+            }
+            });
+    }
   </script>
 <style>
 #div-box {

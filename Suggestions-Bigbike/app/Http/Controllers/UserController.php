@@ -620,58 +620,59 @@ class UserController extends Controller
 }
     
     public function deleteCar(Request $request){
-        
-        try {
-            DB::table('data')->where('Data_id', '>', $request->idd)->delete();
+        // print_r($request->all());
+        // try {
+            DB::table('data')->where('Data_id', '=', $request->idd)->delete();
             Alert::success('ลบสำเร็จ')->autoclose(1000);
-            return redirect('/');
-            //code...
-        } catch (\Throwable $th) {
+            // response()->json(['success'=>$data]);
+            return view('/');
+        //     //code...
+        // } catch (\Throwable $th) {
 
            
-            $data = DB::select("select * from data where Data_id = :id ",['id' => ($request->idd)]);     
+        //     $data = DB::select("select * from data where Data_id = :id ",['id' => ($request->idd)]);     
         
-            foreach($data as $title){
-                $Data_id = $title->Data_id;
-                $Data_name= $title->Data_name;
-                $Data_engine_size= $title->Data_engine_size;
-                $price= $title->price ;
-                $Data_using= $title->Data_using;
-                $Data_image= $title->Data_image;
-                $Date_years= $title->Date_years;
-                $show_type= $title->show_type;
-                $Ignition_system = $title->Ignition_system;
-                $Fuel_type= $title->Fuel_type;
-                $Fuel_supply_system = $title->Fuel_supply_system;
-                $Fuel_tank_capacity= $title->Fuel_tank_capacity;
-                $Suspension_system= $title->Suspension_system;
-                $Brake_system= $title->Brake_system;
-                $Tire_size = $title->Tire_size;
-                $Size= $title->Size;
-                $weight = $title->weight;
-            }    
-            Alert::error('เกิดข้อผิดพลาด')->autoclose(1000);
-                    return view('showproduct',
-                    [
-                     'Data_id'=>$Data_id,    
-                    'Data_name'=>$Data_name,
-                    'Data_engine_size'=>$Data_engine_size,
-                    'price'=>$price,
-                    'Data_using'=>$Data_using,
-                    'Data_image'=>$Data_image,
-                    'Date_years'=>$Date_years,
-                    'show_type'=>$show_type,
-                    'Ignition_system'=>$Ignition_system,
-                    'Fuel_type'=>$Fuel_type,
-                    'Fuel_supply_system'=>$Fuel_supply_system,
-                    'Fuel_tank_capacity'=>$Fuel_tank_capacity,
-                    'Suspension_system'=>$Suspension_system,
-                    'Brake_system'=>$Brake_system,
-                    'Tire_size'=>$Tire_size,
-                    'Size'=>$Size,
-                    'weight' =>$weight
-            ]); 
-        }
+        //     foreach($data as $title){
+        //         $Data_id = $title->Data_id;
+        //         $Data_name= $title->Data_name;
+        //         $Data_engine_size= $title->Data_engine_size;
+        //         $price= $title->price ;
+        //         $Data_using= $title->Data_using;
+        //         $Data_image= $title->Data_image;
+        //         $Date_years= $title->Date_years;
+        //         $show_type= $title->show_type;
+        //         $Ignition_system = $title->Ignition_system;
+        //         $Fuel_type= $title->Fuel_type;
+        //         $Fuel_supply_system = $title->Fuel_supply_system;
+        //         $Fuel_tank_capacity= $title->Fuel_tank_capacity;
+        //         $Suspension_system= $title->Suspension_system;
+        //         $Brake_system= $title->Brake_system;
+        //         $Tire_size = $title->Tire_size;
+        //         $Size= $title->Size;
+        //         $weight = $title->weight;
+        //     }    
+        //     Alert::error('เกิดข้อผิดพลาด')->autoclose(1000);
+        //             return view('showproduct',
+        //             [
+        //              'Data_id'=>$Data_id,    
+        //             'Data_name'=>$Data_name,
+        //             'Data_engine_size'=>$Data_engine_size,
+        //             'price'=>$price,
+        //             'Data_using'=>$Data_using,
+        //             'Data_image'=>$Data_image,
+        //             'Date_years'=>$Date_years,
+        //             'show_type'=>$show_type,
+        //             'Ignition_system'=>$Ignition_system,
+        //             'Fuel_type'=>$Fuel_type,
+        //             'Fuel_supply_system'=>$Fuel_supply_system,
+        //             'Fuel_tank_capacity'=>$Fuel_tank_capacity,
+        //             'Suspension_system'=>$Suspension_system,
+        //             'Brake_system'=>$Brake_system,
+        //             'Tire_size'=>$Tire_size,
+        //             'Size'=>$Size,
+        //             'weight' =>$weight
+        //     ]); 
+        // }
 
     }
 }
