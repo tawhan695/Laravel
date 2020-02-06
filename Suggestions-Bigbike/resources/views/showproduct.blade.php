@@ -254,7 +254,8 @@
          @if (session()->has('admin-login'))
              
          <div class="float-right">
-             <button type="reset" class="btn btn-warning radius20">แก้ไข</button>
+             <button type="reset" class="btn btn-warning radius20"><a href="/editproduct/{{$Data_id}}">แก้ไข</a></button>
+             
              <form action="/deleteCar" method="post">
                @csrf
                 <input type="text" name="idd" hidden value="{{$Data_id}}" >
